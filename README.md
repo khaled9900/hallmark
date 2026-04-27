@@ -8,15 +8,54 @@ A design skill for AI coding assistants. Makes the UIs they generate look made, 
 
 ## What it is
 
-Hallmark is a single, opinionated skill — short on purpose — that teaches Claude Code / Cursor / Codex a firm, consensus-backed set of rules for typography, colour, layout, motion, interaction, responsive behaviour, and copy. It refuses to design without a confirmed audience, use case, and tone. It refuses to emit the on-distribution defaults every LLM was trained into (Inter + purple gradient + centred hero + 3-column icon tiles).
+A single, opinionated skill — short on purpose — that teaches Claude Code, Cursor, or Codex a firm, consensus-backed set of rules for typography, colour, layout, motion, interaction, microinteractions, copy, responsive behaviour, and structural variety. It refuses to design without a confirmed audience, use case, and tone, and refuses to emit the on-distribution defaults every LLM was trained into.
 
-It ships one holistic verb and two auxiliary ones:
+The differentiator: Hallmark insists on **structural variety**, not just visual variety. Two pages by Hallmark for two different briefs should not share the same hero → 3-feature → CTA → footer rhythm.
 
-| Invocation | What it does |
+---
+
+## Four verbs
+
+| Verb | What it does |
 | --- | --- |
-| *(default)* | Build / edit UI. Requires design context before touching code. |
-| `hallmark audit <target>` | Score existing code against the named anti-patterns. Returns a punch list. |
-| `hallmark refine <target>` | Apply the ruleset to polish existing code with the smallest possible diff. |
+| *(default)* | Build new UI — passes the design-context gate, picks a structural fingerprint, applies the ruleset, runs the slop test before handing back. |
+| `hallmark audit <target>` | Score existing code against the named anti-patterns + structural sameness. Returns a punch list. No edits. |
+| `hallmark refine <target>` | Polish in place. Smallest possible diff. Preserves structure. |
+| `hallmark redesign <target> [--mood <name>]` | Throw out the structure, keep copy + IA + brand, rebuild with a deliberately different structural fingerprint. |
+
+---
+
+## What's inside
+
+**Skill** — [`skill/SKILL.md`](skill/SKILL.md) plus ten reference files:
+
+- [`typography.md`](skill/references/typography.md) — banned defaults, pairing rules, weight extremes, scale ratios
+- [`color.md`](skill/references/color.md) — OKLCH palette construction, accent discipline (≤3% area), dark-mode recipe
+- [`layout-and-space.md`](skill/references/layout-and-space.md) — 4pt scale, asymmetry, grid-breaks, depth via weight not shadow
+- [`structure.md`](skill/references/structure.md) — six axes of structural variety (heading placement, body composition, divider, button voice, image, reveal); the per-theme structural fingerprint table
+- [`motion.md`](skill/references/motion.md) — duration buckets, three named easings, no bounce on UI, reduced-motion default
+- [`microinteractions.md`](skill/references/microinteractions.md) — 14 interaction recipes (button press, focus, modal, toast, optimistic update, command palette, drag, copy-to-clipboard, search-as-you-type) and the 20 named microinteraction tells
+- [`interaction-and-states.md`](skill/references/interaction-and-states.md) — eight states per element, focus-visible spec, 44px hit targets, undo over confirm
+- [`responsive.md`](skill/references/responsive.md) — mobile-first, content-driven breakpoints, `dvh` not `vh`, safe-area-insets
+- [`copy.md`](skill/references/copy.md) — specific verbs, three-part errors, standalone link text, proper typographic punctuation
+- [`anti-patterns.md`](skill/references/anti-patterns.md) — 30+ named tells with severity, why they fail, and the fix
+
+**Slop test (20 questions)** — every output must answer *no* to all twenty before shipping. Visual (8), structural (2), microinteraction (10).
+
+**Site** — [`site/`](site/) is a self-demonstrating landing page. Hand-written HTML + CSS + ES module, no framework, no build step. Uses Together AI's "The Future" typeface plus Google Fonts.
+
+**Twelve themes**, four categories, each with its own structural fingerprint:
+
+- **Editorial** — Specimen, Newsprint, Atelier
+- **Soft** — Garden, Salon, Linen
+- **Technical** — Midnight, Terminal, Almanac
+- **Bold** — Brutal, Manifesto, Sport
+
+Each theme overrides not only colour and typography but section-heading placement, column counts, divider style, button voice, and reveal pattern. The same landing page reorganises itself per theme, demonstrating the structural-variety principle.
+
+**Two test specimens** — [`site/_example-bakery/`](site/_example-bakery/) (an editorial bakery announcement, output of a real `hallmark` run) and [`site/_example-cmdk/`](site/_example-cmdk/) (a keyboard-first command palette demonstrating the microinteraction canon).
+
+**Roadmap** — [`ROADMAP.md`](ROADMAP.md) lists Tier 1, 2, and 3 work, plus an explicit "things to *not* do" list and measurement criteria.
 
 ---
 
@@ -28,7 +67,7 @@ It ships one holistic verb and two auxiliary ones:
 npx skills add hallmark
 ```
 
-### Claude Code
+### Claude Code (manual)
 
 Copy [`skill/SKILL.md`](skill/SKILL.md) and [`skill/references/`](skill/references/) into `~/.claude/skills/hallmark/`.
 
@@ -36,70 +75,33 @@ Copy [`skill/SKILL.md`](skill/SKILL.md) and [`skill/references/`](skill/referenc
 
 Create `.cursor/rules/hallmark.mdc` with the body of `SKILL.md` (no frontmatter).
 
-### Manual
-
-`git clone` this repo; copy `skill/` into whatever config directory your agent uses.
-
----
-
-## Philosophy
-
-Five skills — [impeccable](https://github.com/pbakaus/impeccable), [kami](https://github.com/tw93/kami), [taste-skill](https://github.com/Leonxlnx/taste-skill), Anthropic's [frontend-design skill](https://github.com/anthropics/skills), and the Claude [frontend aesthetics cookbook](https://platform.claude.com/cookbook/coding-prompting-for-frontend-aesthetics) — have converged on roughly the same anti-slop ruleset. Hallmark takes that consensus, restates it in one voice, and keeps the surface small so it actually gets loaded into context.
-
-Hallmark's distinct choices:
-
-- **One skill, three verbs.** Not eighteen commands. Use the default; reach for `audit` or `refine` when you need them.
-- **Design-context gate.** No audience + use case + tone → no design. The skill will ask.
-- **Tone as a first-class decision.** "Clean and modern" is rejected. You pick an extreme: editorial, brutalist, soft, utilitarian, luxury, playful, technical, austere.
-- **The slop test.** Before handing back, the skill runs ten yes/no checks. One yes fails the output.
-
----
-
-## The landing page
-
-[`site/`](site/) is a live specimen — it's the skill applied to itself. Serve it statically:
+### View the landing page locally
 
 ```
 cd site && python3 -m http.server 4173
 # → http://localhost:4173
 ```
 
-The page uses Together AI's "The Future" typeface (distributed here with permission for demonstration), an OKLCH warm-oat palette anchored at hue 80, a single signal-orange accent (`#FC4C02`, ≤ 3 % of any view), and a drafting-specimen layout language — hairline rules, small-caps section numbering, asymmetric columns.
-
-No framework. No build step. One `index.html`, four stylesheets, one ES module.
-
 ---
 
-## Repo layout
+## Philosophy
 
-```
-hallmark/
-├── README.md               ← you are here
-├── LICENSE                 ← MIT
-├── package.json            ← for `npx skills add`
-├── skill/
-│   ├── SKILL.md            ← main routing + principles
-│   └── references/
-│       ├── typography.md
-│       ├── color.md
-│       ├── layout-and-space.md
-│       ├── motion.md
-│       ├── interaction-and-states.md
-│       ├── responsive.md
-│       ├── copy.md
-│       └── anti-patterns.md
-└── site/
-    ├── index.html
-    ├── css/{tokens,base,components,sections}.css
-    ├── js/main.js
-    └── fonts/the-future-*.woff2
-```
+Five skills — [impeccable](https://github.com/pbakaus/impeccable), [kami](https://github.com/tw93/kami), [taste-skill](https://github.com/Leonxlnx/taste-skill), Anthropic's [frontend-design skill](https://github.com/anthropics/skills), and the Claude [frontend aesthetics cookbook](https://platform.claude.com/cookbook/coding-prompting-for-frontend-aesthetics) — have converged on roughly the same anti-slop ruleset. Hallmark takes that consensus, restates it in one voice, fills the gap on motion and microinteractions, and adds *structural* variety as a first-class principle.
+
+Distinct choices:
+
+- **One skill, four verbs.** Not eighteen commands. Use the default; reach for `audit`, `refine`, or `redesign` when you need them.
+- **Design-context gate.** No audience + use case + tone → no design. The skill asks.
+- **Tone as a first-class decision.** "Clean and modern" is rejected. Pick an extreme: editorial, brutalist, soft, utilitarian, luxury, playful, technical, austere.
+- **Structural fingerprint.** Every page picks one option from each of six axes. Two consecutive outputs in a session should never share the same fingerprint.
+- **Microinteractions are not decoration.** Silent success over celebratory toasts. Optimistic update + Undo over confirm dialogs. Hover delay 800 ms, focus delay 0 ms.
+- **The slop test.** Twenty yes/no checks before handing back. One yes fails the output.
 
 ---
 
 ## Credits
 
-Built on the open work of Paul Bakaus ([impeccable](https://github.com/pbakaus/impeccable)), tw93 ([kami](https://github.com/tw93/kami)), Leonxlnx ([taste-skill](https://github.com/Leonxlnx/taste-skill)), and Anthropic's skills team. Where their rules overlapped, Hallmark adopted them; where they diverged, Hallmark picked. See each source for its own deeper treatment of the same problem.
+Built on the open work of Paul Bakaus ([impeccable](https://github.com/pbakaus/impeccable)), tw93 ([kami](https://github.com/tw93/kami)), Leonxlnx ([taste-skill](https://github.com/Leonxlnx/taste-skill)), Anthropic's skills team ([frontend-design](https://github.com/anthropics/skills) and [canvas-design](https://github.com/anthropics/skills)), [DESIGN.md](https://getdesign.md) (Google Stitch), MC Dean's [63 design skills](https://marieclairedean.substack.com/p/i-built-63-design-skills-for-claude), [PencilPlaybook](https://github.com/stevembarclay/pencilplaybook), and the [Slopless](https://slopless.design) tactile-rebellion canon. Where rules overlapped, Hallmark adopted; where they diverged, Hallmark picked.
 
 ---
 

@@ -11,14 +11,12 @@
 
 /* — Nav ————————————————————————————————————————————— */
 .nav {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--space-lg);
   padding-block: var(--space-md);
 }
-
-.nav__themer { justify-self: center; }
 
 .nav__meta {
   font-family: var(--font-label);
@@ -26,19 +24,9 @@
   color: var(--color-muted);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  justify-self: end;
 }
 
 .nav__meta a { color: var(--color-ink); }
-
-@media (max-width: 56rem) {
-  .nav {
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    row-gap: var(--space-md);
-  }
-  .nav__themer { grid-column: 1 / -1; justify-self: stretch; }
-}
 
 /* — Section container ——————————————————————————————— */
 .section {
