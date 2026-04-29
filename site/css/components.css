@@ -742,7 +742,7 @@
   animation-timing-function: var(--ease-out);
 }
 
-/* ───────────── STUDIO — italic Instrument Serif display ───────────── */
+/* ───────────── STUDIO — Fraunces italic display ───────────── */
 
 [data-theme="studio"] .hero__display,
 [data-theme="studio"] .section__title,
@@ -753,11 +753,13 @@
 [data-theme="studio"] .tell__name {
   font-style: italic;
   letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
 }
 
 [data-theme="studio"] .banner__center {
   font-style: italic;
   letter-spacing: 0;
+  font-variation-settings: "opsz" 24;
 }
 
 [data-theme="studio"] .hero__lede,

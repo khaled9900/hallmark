@@ -621,9 +621,11 @@
 }
 
 /* ──────────────────────────────────────────────────────────────
-   STUDIO — modern editorial agency · italic Instrument Serif
+   STUDIO — modern editorial agency · Fraunces italic display
    Inspiration: 14islands, Mathieu Triay, Frame, Gretel, contemporary
    studio portfolios in 2026. Forest-green accent — uncommon, distinctive.
+   Fraunces is a variable serif with conventional italic letterforms;
+   used here at high optical size + soft axis for the editorial agency feel.
    ────────────────────────────────────────────────────────────── */
 
 [data-theme="studio"] {
@@ -640,14 +642,16 @@
   --color-accent-ink: oklch(46%  0.140 145);
   --color-focus:    oklch(46%    0.140 145);
 
-  --font-display: "Instrument Serif", "Tiempos", ui-serif, Georgia, serif;
+  --font-display: "Fraunces", "Tiempos", ui-serif, Georgia, serif;
   --font-body:    "Geist", "Söhne", ui-sans-serif, system-ui, sans-serif;
-  --font-serif:   "Instrument Serif", ui-serif, Georgia, serif;
+  --font-serif:   "Fraunces", ui-serif, Georgia, serif;
   --font-label:   "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
   --font-mono:    "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
 
   --display-weight: 400;
+  --display-optical: 144;
   --display-style: italic;
+  --display-soft: 30;
 
   --text-display:   clamp(3.5rem, 7vw + 1rem, 7.5rem);
   --text-display-s: clamp(2.25rem, 4vw + 1rem, 4.25rem);
