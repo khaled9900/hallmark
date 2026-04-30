@@ -482,23 +482,27 @@
 }
 
 /* ──────────────────────────────────────────────────────────────
-   LINEN — desaturated linen-beige · LIGHT GEOMETRIC SANS display
-   Sans-serif display is the key differentiator from Specimen / Atelier / Salon
+   LINEN — cool slate-grey paper · LIGHT GEOMETRIC SANS display
+   Repalleted from warm linen-yellow to cool slate-grey for theme variety —
+   the gallery had too many cream-paper themes (Specimen, Atelier, Newsprint,
+   Salon, Studio, Riso). Linen now sits on the cool side: low-chroma paper
+   at hue 220, steel-blue accent. Same fabric voice, different dye.
+   Sans-serif display is the key differentiator from Specimen / Atelier / Salon.
    ────────────────────────────────────────────────────────────── */
 
 [data-theme="linen"] {
-  --color-paper:    oklch(89%  0.022 95);
-  --color-paper-2:  oklch(86%  0.026 95);
-  --color-paper-3:  oklch(82%  0.030 95);
-  --color-rule:     oklch(72%  0.022 95);
-  --color-rule-2:   oklch(58%  0.024 95);
-  --color-muted:    oklch(46%  0.020 90);
-  --color-neutral:  oklch(34%  0.022 90);
-  --color-ink-2:    oklch(28%  0.024 90);
-  --color-ink:      oklch(22%  0.025 90);
-  --color-accent:   oklch(46%  0.06 95);
-  --color-accent-ink: oklch(50% 0.07 95);
-  --color-focus:    oklch(50%  0.10 100);
+  --color-paper:    oklch(91%  0.012 220);
+  --color-paper-2:  oklch(88%  0.014 220);
+  --color-paper-3:  oklch(83%  0.016 215);
+  --color-rule:     oklch(74%  0.014 215);
+  --color-rule-2:   oklch(56%  0.020 215);
+  --color-muted:    oklch(46%  0.020 215);
+  --color-neutral:  oklch(34%  0.024 215);
+  --color-ink-2:    oklch(26%  0.026 215);
+  --color-ink:      oklch(18%  0.028 220);
+  --color-accent:   oklch(40%  0.12 232);
+  --color-accent-ink: oklch(46% 0.14 232);
+  --color-focus:    oklch(50%  0.16 232);
 
   --font-display: "IBM Plex Sans", "Hanken Grotesk", ui-sans-serif, sans-serif;
   --font-body:    "IBM Plex Sans", "Hanken Grotesk", ui-sans-serif, sans-serif;
@@ -638,18 +642,22 @@
    studio portfolios in 2026. Forest-green accent — uncommon, distinctive.
    Fraunces is a variable serif with conventional italic letterforms;
    used here at high optical size + soft axis for the editorial agency feel.
+   Repalleted: paper shifts from warm-cream to cool-grey (hue 200, very low
+   chroma) so Studio's italic-Fraunces + forest-green accent reads against
+   a calm, scientific surface — like a research-studio rather than a
+   warm-bohemian-studio. The green accent is the identity, not the paper.
    ────────────────────────────────────────────────────────────── */
 
 [data-theme="studio"] {
-  --color-paper:    oklch(96.5%  0.014 95);
-  --color-paper-2:  oklch(94%    0.016 95);
-  --color-paper-3:  oklch(90%    0.018 95);
-  --color-rule:     oklch(82%    0.012 90);
-  --color-rule-2:   oklch(70%    0.010 90);
-  --color-muted:    oklch(48%    0.010 95);
-  --color-neutral:  oklch(34%    0.014 100);
-  --color-ink-2:    oklch(22%    0.018 100);
-  --color-ink:      oklch(13%    0.020 100);
+  --color-paper:    oklch(96.5%  0.005 200);
+  --color-paper-2:  oklch(93.5%  0.007 200);
+  --color-paper-3:  oklch(89%    0.010 200);
+  --color-rule:     oklch(82%    0.008 200);
+  --color-rule-2:   oklch(68%    0.010 200);
+  --color-muted:    oklch(48%    0.012 205);
+  --color-neutral:  oklch(34%    0.016 205);
+  --color-ink-2:    oklch(22%    0.020 205);
+  --color-ink:      oklch(13%    0.024 205);
   --color-accent:   oklch(46%    0.140 145);
   --color-accent-ink: oklch(46%  0.140 145);
   --color-focus:    oklch(46%    0.140 145);
@@ -828,7 +836,7 @@
 [data-theme="manifesto"] { --rule-card: 2px; }
 [data-theme="sport"]     { --rule-card: 1.5px; }
 [data-theme="garden"]    { --radius-card: 6px; --radius-pill: 4px; }
-[data-theme="studio"]    { --radius-card: 6px; --radius-pill: 4px;  --shadow-card: 0 1px 2px oklch(20% 0.012 100 / 0.04); }
+[data-theme="studio"]    { --radius-card: 6px; --radius-pill: 4px;  --shadow-card: 0 1px 2px oklch(20% 0.014 205 / 0.05); }
 [data-theme="pastel"]    { --radius-card: 12px; --radius-pill: 999px; --radius-input: 8px;
                             --shadow-card: 0 8px 24px -10px oklch(50% 0.13 282 / 0.14); }
 [data-theme="riso"]      { --radius-card: 2px; --radius-pill: 2px; }
