@@ -1638,6 +1638,166 @@
 [data-theme="quiet"] .hero--clipped .hero__mock { display: none; }
 [data-theme="quiet"] .hero--clipped { grid-template-columns: 1fr; }
 
+/* ───────────── EXAMPLE GALLERY ─────────────
+   Cards link to the six self-contained test pages under site/_tests/.
+   The cards inherit the active theme's --radius-card, --rule-card, and
+   --shadow-card so switching themes restyles them along with everything else. */
+
+.examples__intro,
+.examples__outro {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-md);
+  line-height: var(--lh-snug);
+  color: var(--color-ink-2);
+  max-width: 56ch;
+  margin-block-end: var(--space-2xl);
+}
+
+.examples__outro {
+  margin-block: var(--space-xl) 0;
+}
+
+.examples__intro code {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.875em;
+  background: var(--color-paper-2);
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-input, 0);
+  border: var(--rule-hair) solid var(--color-rule);
+  color: var(--color-ink);
+}
+
+[data-theme="brutal"] .examples__intro,
+[data-theme="manifesto"] .examples__intro,
+[data-theme="terminal"] .examples__intro,
+[data-theme="sport"] .examples__intro,
+[data-theme="almanac"] .examples__intro,
+[data-theme="brutal"] .examples__outro,
+[data-theme="manifesto"] .examples__outro,
+[data-theme="terminal"] .examples__outro,
+[data-theme="sport"] .examples__outro,
+[data-theme="almanac"] .examples__outro {
+  font-family: var(--font-body);
+  font-style: normal;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+@media (max-width: 60rem) {
+  .gallery { grid-template-columns: 1fr; }
+}
+
+.gallery__item {
+  display: grid;
+  grid-template-areas:
+    "num name"
+    "num shape"
+    "num desc"
+    "num open";
+  grid-template-columns: 4rem 1fr;
+  gap: 0 var(--space-md);
+  padding: var(--space-lg);
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-paper);
+  border: var(--rule-card, 1px) solid var(--color-rule);
+  border-radius: var(--radius-card, 0);
+  box-shadow: var(--shadow-card, none);
+  transition: transform 100ms var(--ease-out),
+              border-color var(--dur-micro) var(--ease-out),
+              box-shadow var(--dur-short) var(--ease-out);
+  position: relative;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery__item:hover {
+    border-color: var(--color-ink);
+    transform: translateY(-1px);
+  }
+}
+
+.gallery__item:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.gallery__num {
+  grid-area: num;
+  font-family: var(--font-label);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  align-self: start;
+  font-feature-settings: "tnum";
+}
+
+.gallery__name {
+  grid-area: name;
+  font-family: var(--font-display);
+  font-weight: var(--display-weight, 500);
+  font-style: var(--display-style, normal);
+  font-size: var(--text-xl);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+  line-height: 1.05;
+  font-optical-sizing: auto;
+}
+
+.gallery__shape {
+  grid-area: shape;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  margin-block-start: 0.4em;
+}
+
+.gallery__desc {
+  grid-area: desc;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-ink-2);
+  line-height: var(--lh-snug);
+  margin-block-start: var(--space-sm);
+  max-width: 36ch;
+}
+
+.gallery__open {
+  grid-area: open;
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  margin-block-start: var(--space-md);
+  align-self: end;
+  justify-self: start;
+  text-transform: uppercase;
+  transition: color var(--dur-micro) var(--ease-out),
+              transform var(--dur-short) var(--ease-out);
+}
+
+.gallery__item:hover .gallery__open {
+  color: var(--color-ink);
+  transform: translateX(2px);
+}
+
+[data-theme="riso"] .gallery__name,
+[data-theme="brutal"] .gallery__name,
+[data-theme="manifesto"] .gallery__name,
+[data-theme="sport"] .gallery__name {
+  text-transform: uppercase;
+}
+
+[data-theme="riso"] .gallery__name {
+  text-transform: lowercase;
+}
+
 /* ───────────── SPORT — section title fix ─────────────
    The italic display + tight tracking + uppercase + weight 700
    produced cramped, almost-touching letterforms. Loosen the

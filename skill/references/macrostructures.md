@@ -29,6 +29,11 @@ Avoid when the message is a single hero idea — Bento spreads attention; one-id
 
 Reference: Apple in-page sections, Framer feature pages, Tailwind UI templates.
 
+**Sample opening lines** (imitate the *specificity*, not the wording):
+> *"Tracejam · v0.4 · for SREs. Distributed tracing that explains itself."* — paraphrased from real observability tools
+> *"Resend is the email API for developers. Send transactional and marketing emails at scale."* — resend.com
+> *"The product development system for teams and agents."* — linear.app
+
 ```html
 <header class="hero-fixed">…</header>
 <section class="bento">
@@ -60,6 +65,11 @@ Avoid when there's a single decisive action to take — Long Document hides CTAs
 
 Reference: Frank Chimero's site, destroytoday.com, long-form Substack essays in product disguise.
 
+**Sample opening lines** (imitate the *specificity*, not the wording):
+> *"Saturday, 6:14 a.m. The dough went in at midnight."* — opens with a time-stamp; the brand introduces itself as a moment in the day
+> *"A monthly art publication featuring contributions by some of the most engaged thinkers working today."* — e-flux.com/journal
+> *"We design everything for everyone."* — pentagram.com — refusal of the verb, treats design as universal practice
+
 ```html
 <article class="prose">
   <p class="lede">…</p>
@@ -90,6 +100,11 @@ Avoid for products whose value requires explanation in seconds. Marquee makes th
 
 Reference: 14islands.com, destroytoday.com, many design studio homepages.
 
+**Sample opening lines** (imitate the *specificity*, not the wording):
+> *"Type, set with care."* — Hallmark Specimen — refusal of the verb, treats type as material
+> *"A studio for what's next."* — italic editorial display, names the practice without explaining it
+> *"Design like print: warm, off-register, intentional."* — Hallmark Riso — declarative, three modifiers, full stop
+
 ```html
 <section class="marquee">
   <h1 class="display-xxl">A statement.</h1>
@@ -116,6 +131,11 @@ Reach for it when the brief is "we have proof in numbers" — enterprise/B2B, fu
 Avoid for products without a defensible single metric. A fake big number is worse than no number.
 
 Reference: Ahrefs, Stripe Sessions stat blocks, climate-impact dashboards, venture firm portfolio pages.
+
+**Sample opening lines** (imitate the *specificity*, not the wording — the number does the work):
+> *"+47% · faster · decide late."* — italicised number, three-word qualifier
+> *"4 seconds. From the alert link to the slow span."* — pairs the number with what it bought
+> *"434 total posts. New CSS you feel like you could use today."* — adam argyle, nerdy.dev — the count grounds the page in real volume
 
 ```html
 <section class="stat-hero">
@@ -145,6 +165,11 @@ Avoid when the product is conceptual or services-led. Workbench needs a UI to sh
 
 Reference: Linear.app, Vercel, Raycast, Arc Browser.
 
+**Sample opening lines** (imitate the *specificity*, not the wording — the page walks the user through):
+> *"$ streampipe parse access.log --filter status=5xx | jq"* — open on a real command, not a marketing claim
+> *"Read anything that emits lines. Files, pipes, sockets, kubectl logs."* — names the inputs, refuses abstraction
+> *"Open the trace, find the span, fix the regression. No glossary required."* — three concrete verbs, then a refusal
+
 ```html
 <header class="lite">…</header>
 <section class="screenshot-frame">
@@ -172,6 +197,11 @@ Reach for it near pricing, for products that meet skepticism, for educational/re
 Avoid as the *primary* page. FAQ usually pairs with another macrostructure that opens the page.
 
 Reference: many SaaS pricing pages, Casper, Substack help pages.
+
+**Sample opening lines** (imitate the *specificity* — questions are real questions, answers are short and concrete):
+> *"What is this for? — A single-binary CLI for parsing log streams from stdin."* — names the form factor, names the input
+> *"How is this different from X? — It's about time."* — cron.com — answers obliquely, with a phrase that has weight
+> *"Who built this? — Three of us, in Lisbon, since 2014."* — date + place + count, no marketing
 
 ```html
 <section class="faq">
@@ -202,6 +232,11 @@ Avoid for transactional pages. Manifesto sells *agreement*, not action.
 
 Reference: Linear's positioning pages, agency rebrand sites, political campaign landing pages.
 
+**Sample opening lines** (imitate the *specificity* — manifestos commit, they don't hedge):
+> *"WE ARE A STUDIO. WE ARE NOT A PLATFORM."* — Meridian (test 04) — defines by refusal, all caps, a single accent word
+> *"We design products that last twelve years. We do not design products that need replacing every two."* — concrete number, paired declaration
+> *"Lightness above weightiness, elevate everyone you encounter."* — craigmod.com — one-line principle, no explanation needed
+
 ```html
 <section class="manifesto bleed-ink">
   <h1 class="caps display-xxl">WE BELIEVE <em class="block-accent">DESIGN</em> IS SLOW.</h1>
@@ -229,6 +264,11 @@ Reach for it for fashion, hospitality, photography portfolios, lifestyle e-comme
 Avoid without real photography. AI-generated stock undoes the macrostructure.
 
 Reference: Aimé Leon Dore, Mr Porter editorial, Stüssy lookbooks.
+
+**Sample opening lines** (imitate the *specificity* — captions for photographs are dates, places, plate numbers — not marketing):
+> *"Plate 47 · scored before the proof."* — Maple Street Bread (test 03) — a number, a moment in the process
+> *"Spring, 2026."* — Atelier-style — two words, full stop
+> *"From the working archive."* — gives the photograph provenance without explaining it
 
 ```html
 <section class="photo-fold">
@@ -260,6 +300,11 @@ Avoid for new products without real testimonials. Fake quotes destroy trust on i
 
 Reference: many B2B SaaS landings, agency homepages, university development pages.
 
+**Sample opening lines** (imitate the *specificity* — quote-led pages let someone else say it, then attribute):
+> *"I started listening on a long bus ride. By the third episode I'd missed my stop, and I didn't mind."* — Tide (test 01) — story-shaped, attributed to a listener
+> *"Restraint, repeated, becomes a signature."* — Hallmark Atelier — short, philosophical, signed by the studio
+> *"It told me the span that regressed, the deploy that caused it, and the engineer to ask. We rolled back in eight minutes."* — Tracejam-style — names the outcome with a number
+
 ```html
 <section class="quote-hero">
   <blockquote class="display-italic">"…"</blockquote>
@@ -287,6 +332,11 @@ Reach for it ONLY when the brief is explicitly editorial, type-foundry, journal,
 **Banned as a default.** If the brief is vague and you've defaulted here, restart.
 
 Reference: type foundry homepages (Klim, Pangram Pangram, Production Type), some editorial portfolios.
+
+**Sample opening lines** (imitate the *specificity* — Specimen openings are foundry-voice, treating type as material culture):
+> *"A thing well made."* — klim.co.nz — refusal of the verb, treats design as material
+> *"Type, set with care."* — Hallmark Specimen — three words, a colon implied
+> *"Creative direction, design and type for culture since 2003."* — apracticeforeverydaylife.com — date-anchored, names verticals
 
 ```html
 <header class="specimen">
@@ -316,6 +366,11 @@ Avoid for narrative brands. Catalogue treats every item as equal — wrong for p
 
 Reference: Klim Type Foundry, Pangram Pangram, Coolors palettes.
 
+**Sample opening lines** (imitate the *specificity* — Catalogue openings are inventory headers, dated, with a count):
+> *"Today's loaves."* — Maple Street Bread (test 03) — two words, ownership of the day
+> *"Five collections, in store now."* — names the count and the where
+> *"Thirty-eight items · Spring 2026 · all hand-stitched."* — count, date, qualifier; no adjectives
+
 ---
 
 ## 12 · Letter
@@ -334,6 +389,11 @@ Reach for it for personal brands, indie founder announcements, sabbatical or piv
 Avoid for transactional commerce. Letter is intimate; commerce is functional.
 
 Reference: Frank Chimero's site, founder farewell posts, indie newsletter front pages.
+
+**Sample opening lines** (imitate the *specificity* — Letter openings are first-person greetings, dated, with a place if relevant):
+> *"Hello, I'm Anya."* — Anya (test 06) — single line, name, full stop
+> *"Saturday, 6:14 a.m. The dough went in at midnight."* — opens on a moment, then explains it
+> *"Hey there. This page is soft because the surface should be soft."* — Hallmark Pastel — colloquial open + a principle
 
 ---
 
@@ -354,6 +414,11 @@ Avoid for marketing pages. Index-First is for browsing audiences; selling needs 
 
 Reference: Are.na's homepage feel, archive sites, documentation indices.
 
+**Sample opening lines** (imitate the *specificity* — Index-First openings are headers for what's below, sometimes nothing more than a label):
+> *"Selected work · 2018 — 2026."* — date range, no preamble
+> *"Things Become Other Things · Lightness above weightiness."* — craigmod.com — two phrases joined by a divider
+> *"Writer + Photographer."* — craigmod.com — three words, summarises the whole site
+
 ---
 
 ## 14 · Narrative Workflow
@@ -372,6 +437,11 @@ Reach for it for products with explicit workflows — project management, design
 Avoid for tools that work in *one* moment. Narrative Workflow needs a real sequence.
 
 Reference: Linear's how-it-works pages, some Figma marketing pages.
+
+**Sample opening lines** (imitate the *specificity* — Narrative Workflow openings are stage labels: numbered, declarative, in process language):
+> *"01 · sourdough overnight · 02 · score at dawn · 03 · pull at seven."* — three numbered stages, no marketing
+> *"1.0 · parse · 2.0 · filter · 3.0 · route."* — Streampipe (test 02) — versioned numbers, three concrete verbs
+> *"I. We design products that last twelve years. II. A material is sustainable when someone, somewhere, can repair it."* — Meridian — Roman numerals + declarative
 
 ---
 
@@ -392,6 +462,11 @@ Avoid for narrative or photographic brands. Split halves the attention; some pag
 
 Reference: Vercel feature pages, Stripe Sessions program pages, many dev-tool homepages.
 
+**Sample opening lines** (imitate the *specificity* — Split Studio openings pair a positioning statement with a proof column):
+> *"A studio for what's next."* — italic display + selected-work column on the right
+> *"Print discipline, on screen."* — Hallmark Newsprint — two-phrase headline, masthead-style
+> *"We design and build distinctive products for ambitious teams."* — names the verb (design and build), names the audience
+
 ---
 
 ## 16 · Feature Stack
@@ -410,6 +485,11 @@ Reach for it for premium products, complex feature stories, anything where you w
 Avoid on mobile-first audiences without strong fallback. Sticky+scroll-sync is rough on small screens.
 
 Reference: Apple product pages, some Stripe Sessions pages, Read.cv onboarding.
+
+**Sample opening lines** (imitate the *specificity* — Feature Stack openings pin a single statement and then walk the user through):
+> *"Plan, build, ship."* — three verbs, three sticky panes
+> *"Read anything that emits lines."* — Streampipe (test 02) — names what's possible, then walks through it
+> *"From stdin, through the pipe, into your dashboard."* — names the data path, then explains each step
 
 ---
 
@@ -430,6 +510,11 @@ Avoid when the brand uses an off-the-shelf face. Type Specimen needs something d
 
 Reference: Klim Type Foundry, Pangram Pangram, Geist Pixel announcement pages.
 
+**Sample opening lines** (imitate the *specificity* — Type Specimen openings are foundry-voice: name the typeface, the weights, the use):
+> *"Reckless Display, set in 96 pt."* — names the face and the size, nothing else
+> *"Eight weights. Three optical sizes. One good italic."* — counts the system in three short phrases
+> *"A type system for editorial."* — refusal of the verb, single noun phrase
+
 ---
 
 ## 18 · Portfolio Grid
@@ -448,6 +533,11 @@ Reach for it for design studios, agencies, photographer portfolios, any creative
 Avoid for products. Portfolio Grid is service-business shape.
 
 Reference: Pentagram, 14islands, Locomotive, Bureau Borsche.
+
+**Sample opening lines** (imitate the *specificity* — Portfolio Grid openings name the volume and the era):
+> *"Selected work · 2018 — 2026."* — date range, two characters of meta
+> *"Twelve projects, six clients, two countries."* — three counts, no adjective
+> *"Work, indexed by year."* — five-word labels, the index is the whole site
 
 ---
 
@@ -468,6 +558,11 @@ Avoid as a substitute for narrative. Some stories shouldn't be read spatially.
 
 Reference: process visualisation sites, ecosystem maps, knowledge-graph products.
 
+**Sample opening lines** (imitate the *specificity* — Map / Diagram openings name the path or the territory):
+> *"Browser → API → Database. Where Tracejam fits."* — names the layers, names the position
+> *"From stdin, through the pipe, into your dashboard."* — labels the spatial flow on the page below
+> *"Three tiers · two regions · one ledger."* — counts the system, geographic + structural
+
 ---
 
 ## 20 · Ecosystem Index
@@ -487,6 +582,11 @@ Avoid for single-product pages. Ecosystem needs multiple things to surface.
 
 Reference: Are.na, Figma Community, Behance.
 
+**Sample opening lines** (imitate the *specificity* — Ecosystem Index openings are surface labels, dated, with a count):
+> *"Featured · Latest · By category."* — three discovery surfaces named, divided
+> *"What's on this week · Editor's pick · The whole catalogue."* — names cadence, curation, breadth
+> *"A toolkit for assembling new worlds from the scraps of the old."* — are.na — second-position copy that breaks template
+
 ---
 
 ## 21 · Component Playground
@@ -505,6 +605,11 @@ Reach for it for design systems, component libraries, code-snippet sites, framew
 Avoid for marketing pages. Playground is utility, not pitch.
 
 Reference: shadcn/ui, Tailwind UI, Once UI, MUI demos, Framer Motion examples.
+
+**Sample opening lines** (imitate the *specificity* — Component Playground openings are tangible: open on a real example, not a claim):
+> *"Try it inline. Then take it home."* — two short imperatives
+> *"Every example is editable. Every output is real."* — pairs claim with proof
+> *"From `npm install` to your first chart in eight lines."* — names the step count, makes a concrete promise
 
 ---
 

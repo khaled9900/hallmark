@@ -22,17 +22,28 @@ If the user insists on one, do it. Otherwise pick from the allowlist below.
 
 ## Pairing patterns that work
 
-| Tone | Display | Body | Mono |
-| --- | --- | --- | --- |
-| Editorial | Fraunces, Tiempos, Newsreader | Söhne, Haffer, IBM Plex Sans | JetBrains Mono |
-| Technical | Söhne Mono, Berkeley Mono | IBM Plex Sans, Inter Display (*not* Inter) | Berkeley Mono |
-| Brutalist | Druk, Monument Extended, NaN Jaune | Neue Haas Grotesk, GT America | GT Pressura Mono |
-| Luxury | Canela, Tiempos Headline | Suisse Int'l, Söhne | — |
-| Playful | Clash Display, Cabinet Grotesk | Satoshi, Plus Jakarta Sans | Space Mono |
-| Austere | ABC Diatype, ABC Monument Grotesk | ABC Diatype, Söhne | ABC Diatype Mono |
-| Workshop (Hallmark's own) | The Future, Futura, Avenir Next | The Future, Söhne | The Future Mono, Berkeley Mono |
+Each tone gets two rows: a **free baseline** (everything Google-Fonts-or-similar; works out of the box) and a **paid upgrade** (foundry licences required; only when the user has confirmed the budget and the licence). The free row is the default. **Never name a paid font in code without confirming the user is licensed** — the demo will fall back to system-default and look broken to the user.
 
-If the project's license budget is zero, free alternatives that are not on-distribution: **Fraunces, Newsreader, Space Grotesk, Plus Jakarta Sans, Bricolage Grotesque, Gabarito, Cabinet Grotesk (via Indian Type Foundry sample), JetBrains Mono, Geist, Geist Mono**.
+| Tone | Tier | Display | Body | Mono |
+| --- | --- | --- | --- | --- |
+| **Editorial** | Free | Fraunces · Newsreader · EB Garamond | IBM Plex Sans · Inter Tight | JetBrains Mono · Geist Mono |
+| | *Paid* | *Tiempos Headline · Söhne Breit · Reckless Display* | *Söhne · Haffer · Untitled Sans* | *Söhne Mono · GT America Mono* |
+| **Technical** | Free | JetBrains Mono · Geist Mono · Geist (700) | Geist · IBM Plex Sans | Geist Mono · JetBrains Mono |
+| | *Paid* | *Berkeley Mono · Söhne Mono · GT Pressura* | *Söhne · Untitled Sans* | *Berkeley Mono · GT Pressura Mono* |
+| **Brutalist** | Free | Inter Tight (heavy) · Anton · Bricolage Grotesque (800) | Inter · Geist | Geist Mono |
+| | *Paid* | *Druk · Monument Extended · NaN Jaune · Migra* | *Söhne Breit · GT America* | *GT America Mono* |
+| **Soft** | Free | Geist · Bricolage Grotesque (500) · Newsreader | Geist · Crimson Pro | Geist Mono |
+| | *Paid* | *Söhne · GT Pressura · Pangaia* | *Söhne · Halyard Text* | *Söhne Mono* |
+| **Luxury** | Free | Cormorant Garamond · Fraunces · Cardo | EB Garamond · Crimson Pro | (rare; if needed: JetBrains Mono) |
+| | *Paid* | *Canela · Tiempos Headline · GT Super · Domaine Display* | *Tiempos Text · Suisse Int'l · Domaine Text* | *(rarely used at this tier)* |
+| **Playful** | Free | Bricolage Grotesque · Fraunces (italic) · Newsreader (italic) | Geist · Newsreader | Geist Mono |
+| | *Paid* | *Clash Display · Cabinet Grotesk · Migra · Tobias* | *Satoshi · Plus Jakarta Sans · GT Maru* | *Space Mono · GT Maru Mono* |
+| **Austere** | Free | system-ui · Inter Tight (regular) · Geist (400) | system-ui · Geist | system-ui · Geist Mono |
+| | *Paid* | *ABC Diatype · ABC Monument Grotesk · Söhne (regular) · ABC Pressura* | *ABC Diatype · Söhne* | *ABC Diatype Mono · Söhne Mono* |
+| **Workshop** *(Hallmark's own theme)* | Free | The Future · Geist · Inter Tight | The Future · Söhne | The Future Mono · Geist Mono |
+| | *Paid* | *Avenir Next · GT Walsheim* | *Söhne · GT Walsheim* | *Berkeley Mono* |
+
+**The discipline.** Default to the free pairings. They're not consolation prizes; Fraunces, Geist, Bricolage Grotesque, and JetBrains Mono are first-rate faces in 2026. The paid upgrades exist for two cases: (a) the user has explicitly confirmed they're licensed, or (b) the user is asking for a specific named foundry voice (e.g., "make it look like Klim", "I want Söhne"). Reach for Tier 2 only then; otherwise the free row is the right answer. Treat the free row as canon, the paid row as a *cited* alternative.
 
 ## Scale
 

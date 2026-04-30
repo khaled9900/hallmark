@@ -652,3 +652,56 @@ When building a section:
 5. If the macrostructure suggests a default (e.g., Bento Grid → F1 Bento), use it; if it doesn't suggest, vary deliberately.
 
 The goal is composed variety — within a page, sections feel different from each other; across pages Hallmark builds, sections feel different from the last.
+
+---
+
+## Mobile collapse — per archetype
+
+Every archetype has a defined collapse behaviour at narrow viewports. The two breakpoints to know:
+
+- **60 rem (~960 px)** — the *layout* breakpoint. Multi-column grids collapse to single column. Tilts and clip effects drop. Sticky panes unstick.
+- **40 rem (~640 px)** — the *typography* breakpoint. Display sizes shrink one step. Side-margin labels move inline. Annotations consolidate.
+
+Below 60 rem the archetype must still feel like itself — same hierarchy, same tone, same rhythm — but in a stacked single-column form. Below 40 rem the page is a phone; treat space like a luxury.
+
+| Archetype | Below 60 rem | Below 40 rem |
+| --- | --- | --- |
+| **H1 Marquee** | unchanged (typography-only; centres / left-biases naturally) | display size step down (`xl` → `lg`); reduce side padding |
+| **H2 Split Diptych** | grid `1fr` (text top, proof column below); divider becomes hairline-rule between | proof column collapses to a 2-column compact grid for items |
+| **H3 Quote-Led** | quote stays full width; attribution wraps to its own line | quote size step down; attribution font-size step down |
+| **H4 Stat-Led** | number stays full width, text stacks below; secondary stats become 2-up grid | number size step down (`clamp` floor lifts); qualifier text wraps |
+| **H5 Letter** | unchanged single column; aside (if present) moves below body, divider becomes top border | salutation size step down; signoff tightens |
+| **H6 Photographic** | image stays full-bleed; caption moves from absolute corner to inline below image | caption font-size step down; corner caption never overlaps text on phones |
+| **H7 Demo Video Clipped-Edge** | **drops the clip**; goes `1fr` stacked, full-width media; tilt removed (clipping at 375 px reads as broken) | media reduces to 16/9; poster image used (auto-playing on cellular is hostile) |
+| **H8 Mockup Split** | drops the tilt; grid `1fr`; mockup goes full-width below text | annotation pins consolidate; numbered legend moves below mockup |
+| **H9 Custom Illustration** | grid `1fr`; illustration moves below text (or above — pick by tone) | illustration scales to ≤ 40 % viewport width; never dominates |
+| **F1 Bento** | grid drops from 6/4-col to 2-col; large tiles span 2; small tiles span 1 | drops to 1-col; tile order respects information priority |
+| **F2 Sticky-scroll stack** | sticky pane unsticks; content becomes linear sequence of paired text+visual blocks | the visuals shrink to 16/9 inline; no sticky behaviour at all |
+| **F3 Tabular spec sheet** | columns reduce: 4-col → 2 (key + value), drop unit + footnote | spec list goes vertical; each row is `dt` above `dd` |
+| **F4 Step sequence** | numbering moves from left margin to inline-with-step | step containers tighten; connector lines drop |
+| **F5 Annotated screenshot** | screenshot full-width; annotations restack as a numbered list below | screenshot 16/9; annotations consolidate into a legend |
+| **F6 Product card grid** | grid 3-up → 2-up | grid 2-up → 1-up; card height becomes flexible |
+| **C1 Outlined chip** | unchanged (chips wrap onto multiple lines if needed) | full-width single chip ; min-height 44 px hit target |
+| **C2 Inline form-as-CTA** | input + button stack vertically; full-width | label moves above input; button is full-width below |
+| **C3 Typographic link** | unchanged (links wrap naturally) | unchanged |
+| **C4 Sticky bottom bar** | unchanged (already designed for narrow); ensure 44 px min-height | label truncates if needed; CTA stays right-aligned |
+| **T1 Pull quote w/ marginalia** | marginalia move below quote; divider becomes hairline | marginalia consolidate into a single line |
+| **T2 Logo wall** | grid 6-up → 3-up | grid 3-up → 2-up; logo height step down (32 px → 24 px) |
+| **T3 Single huge quote** | quote remains full width; attribution wraps below | quote size step down by 1.4× |
+| **T4 Numbered stat strip** | strip 4-up → 2-up | strip becomes vertical; 1 stat per row |
+| **Ft1 Mast-headed** | links wrap to two lines; tagline below wordmark | wordmark size step down; tagline italicises in if not already |
+| **Ft2 Inline single line** | links wrap to multiple lines; separator becomes a soft return | becomes a vertical list |
+| **Ft3 Index columns** | grid 4-col → 2-col | grid 2-col → 1-col; column heads remain |
+| **Ft4 Dense colophon** | unchanged (mono/wraps naturally); reduce padding | font-size step down |
+| **N1 Wordmark + 2 links** | unchanged | links wrap to second line if long; wordmark stays |
+| **N2 Floating chip** | chip remains floating; reduce padding | chip widens to support 44 px hit target; never below 280 px |
+| **N3 Side-rail** | rail unsticks and becomes a hamburger trigger above | hamburger becomes the only nav |
+| **N4 ⌘K-only** | hamburger appears for users who don't know ⌘K | unchanged (⌘K equivalent is on-screen tap) |
+
+**Cross-cutting rules:**
+
+- All hit targets ≥ 44 × 44 px below 40 rem (WCAG AA). Never below.
+- Padding-inline ≥ `clamp(1rem, 4vw, 1.5rem)` on the page container so content doesn't kiss the screen edge.
+- Disable any scroll-linked animation below 40 rem (mobile scroll has its own physics; layered animations fight it).
+- Image `loading="lazy"` always below the fold; **never on the LCP element regardless of viewport.**
+- Auto-play video respects `data-saver` (`navigator.connection.saveData`) — replaces with poster when set.

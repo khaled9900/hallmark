@@ -132,17 +132,20 @@ If you can't infer the domain, ask one question — "what does this thing do?" �
 | --- | --- |
 | **podcast, audio, music, playlist, listening** | **Photographic** · **Quote-Led** · **Letter** |
 | **shop, store, product, merch, commerce, ecom** | **Catalogue** · **Photographic** · **Bento Grid** |
-| **docs, CLI, SDK, API, library, developer, terminal** | **Workbench** · **Long Document** · **Component Playground** |
-| **agency, studio, portfolio, freelance, creative shop** | **Portfolio Grid** · **Split Studio** · **Index-First** |
+| **docs, CLI, SDK, API, library, open source, developer reference** | **Workbench** · **Long Document** · **Component Playground** |
+| **platform, infra, observability, dashboard SaaS, B2B tool, try-or-talk-to-sales** | **Bento Grid** · **Workbench** · **Stat-Led** |
+| **agency, studio (work-led), case studies, multi-project portfolio, freelance creative** | **Portfolio Grid** · **Split Studio** · **Index-First** |
+| **personal one-pager, individual, about-me, resume (no case studies)** | **Long Document** · **Letter** · **Index-First** |
 | **restaurant, café, bar, food, kitchen, menu** | **Photographic** · **Long Document** · **Catalogue** |
 | **fashion, apparel, beauty, lookbook** | **Photographic** · **Catalogue** · **Marquee Hero** |
 | **fintech, banking, payments, invest, trading** | **Stat-Led** · **Workbench** · **Long Document** |
-| **personal, resume, one-pager, about-me, individual** | **Long Document** · **Letter** · **Index-First** |
 | **manifesto, campaign, cause, advocacy, political** | **Manifesto** · **Quote-Led** · **Stat-Led** |
 | **editorial, foundry, magazine, type, specimen** | **Specimen** · **Long Document** · **Type Specimen** |
 | **product launch, SaaS marketing, B2B** | **Bento Grid** · **Workbench** · **Stat-Led** |
 | **conference, event, speaker, keynote** | **Marquee Hero** · **Manifesto** · **Photographic** |
 | **fallback (genuinely no signal)** | **Bento Grid** · **Long Document** · **Manifesto** |
+
+**Note on splits.** Some domains split on intent. *Developer-tool docs* and *developer-tool marketing* both have "developer" in them, but the docs page wants a Workbench walkthrough; the marketing page wants Bento Grid + Stat-Led so the SRE can read the value prop in 30 seconds. Same for *personal*: a one-pager about-me and a multi-project portfolio of case studies are *different briefs* — the one-pager wants prose (Long Doc / Letter); the portfolio wants Portfolio Grid / Split Studio. If the brief is ambiguous, **ask one question** to disambiguate ("docs walkthrough or marketing landing?", "one-pager or case studies?") before picking the trio.
 
 If the user shrugs and says "you pick", read the project's CSS for a `/* Hallmark · macrostructure: ... */` stamp; whichever of the trio is most categorically distant from the stamped family is the right pick. Two consecutive outputs should never be from the same family — never two editorial macrostructures, never two grid-led macrostructures.
 

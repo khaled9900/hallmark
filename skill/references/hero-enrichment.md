@@ -71,6 +71,8 @@ A display headline left, a demo video right, and the rightmost ~10–20 % of the
 - Aspect ratio (16/10 · 16/9 · 4/3)
 - Frame treatment (hairline 1 px frame · browser chrome · none)
 
+**Example.** Tracejam (SaaS observability — see [`site/_tests/05-tracejam-saas/`](../../site/_tests/05-tracejam-saas/)). Display headline left ("Distributed tracing that explains itself."); hand-built CSS-art trace waterfall right, tilted -0.4°, extending 12 vw past the viewport's right edge. Aspect 16/10. Hairline frame. **Not a real video** — the mockup is custom-built CSS at Tier A (rectangles on a percentage grid simulating a flame chart). Mobile (< 60 rem): drop the clip, stack vertically.
+
 ```html
 <section class="hero hero--clipped">
   <div class="hero__copy">
@@ -132,6 +134,8 @@ Video fills the fold, ghost-tinted via `mix-blend-mode: multiply` over a paper-c
 - Text alignment (left-bias / centred)
 - Pause behaviour (always-loop · pause-on-hover · pause-when-out-of-viewport)
 
+**Example.** A small fashion brand's spring lookbook. 8-second muted loop of fabric draping in a studio. `mix-blend-mode: multiply` over a 0.5-opacity warm-cream overlay so the italic display headline ("Spring · 2026 · Lookbook 04") reads cleanly over the moving footage. Pauses on hover so the user can read the lede without distraction. Caption track (VTT) describes the footage for accessibility.
+
 ### E3 · Mock App Screenshot — Browser-framed split
 
 Display headline left, a browser-frame mockup right, the mockup window slightly tilted (1–3°) for life. Frames are from [Browserframe](https://browserframe.com) or hand-built (a 1-px hairline + three macOS dots).
@@ -143,6 +147,8 @@ Display headline left, a browser-frame mockup right, the mockup window slightly 
 - Frame style (browser chrome · macOS toolbar · minimal hairline · none)
 - Tilt angle (0° · 1.5° · 3°)
 - Screenshot count (1 · stack-of-3 · orbit-of-3)
+
+**Example.** A Linear-style SaaS landing for a project tracker. Headline left ("Plan, build, ship."), browser-frame screenshot of the kanban view right, tilted 1.5° clockwise. Three numbered annotations (1 · assigns automatically · 2 · real-time presence · 3 · keyboard-first), each with a small numbered pin and a margin-aligned caption — never arrows-and-labels. Single screenshot, not a stack — fewer assets to load, sharper read.
 
 ### E4 · Mock App Screenshot — Floating no-frame
 
@@ -156,6 +162,8 @@ Same composition as E3 but without browser chrome — the screenshot floats with
 - Corner radius (0 · 8 px · 16 px)
 - Background reveal (gradient / solid / none)
 
+**Example.** A code-formatting CLI marketing page. Headline left ("Format anything, in eight lines."), a single floating screenshot right showing `before` / `after` code side by side. 12 px corner radius, a soft 24 px shadow at -10 px offset, sitting on a barely-tinted gradient surface. **No browser chrome** — the screenshot itself is composed and beautiful enough to stand naked. Use this when the screenshot is unusually high-quality; otherwise switch to E3 (the chrome forgives messier captures).
+
 ### E5 · Custom Illustration Centerpiece
 
 A hand-built SVG (the default, Tier B) or a generated raster (Tier C, when characters demand it) sitting on the hero as a single illustrative element — the bakery loaf, the studio's mascot, the diagram of how the workflow flows.
@@ -168,7 +176,9 @@ A hand-built SVG (the default, Tier B) or a generated raster (Tier C, when chara
 - Animation (none · loop · scroll-linked)
 - Scale (small accent · dominant)
 
-For *how* to build a hand-drawn loaf in 60 lines of SVG and animate its breath with `@property`, see [`custom-craft.md`](custom-craft.md) — there's a full bakery worked example.
+**Example.** Maple Street Bread (bakery — see [`site/_tests/03-maple-bakery/`](../../site/_tests/03-maple-bakery/)). Letter-style hero copy left ("Saturday, 6:14 a.m. The dough went in at midnight."), 60-line hand-built SVG loaf right, 3 paths (body, shade, score-marks). Animated with `@property --rise` for a subtle 4 px breathing-loop over 6 s, alternating; the score-marks draw themselves on first paint via `stroke-dasharray`. Tier B, dominant scale, animation: loop. Reduced-motion fallback is a static keyframe.
+
+For *how* to build a hand-drawn loaf in 60 lines of SVG and animate its breath with `@property`, see [`custom-craft.md`](custom-craft.md) — there's a full bakery worked example, plus four more recipes (workflow diagram, mascot, architectural diagram, botanical accent).
 
 ### E6 · Animated Loop — pure CSS / SVG / Motion
 
@@ -182,6 +192,8 @@ A small custom-built loop — an orbiting dot, a breathing rectangle, an animate
 - Placement (margin · inline-with-headline · corner-accent)
 - Loop duration (≤ 4s — anything longer drags)
 
+**Example.** A collaborative whiteboard app. A 2-second pure-CSS loop next to the headline: a single dot orbiting a slow ellipse, suggesting "real-time collaboration" without a Lottie. Built with `@property --angle` interpolating 0deg → 360deg on a `transform: rotate()`. Margin-placed, ~64 × 64 px, accent colour at low chroma. **Not a Lottie** — pure CSS keeps the bundle at zero bytes and respects reduced-motion gracefully (animation: none on the media query).
+
 ### E7 · Abstract Background — subtle gradient + grain
 
 A two-colour CSS gradient at low chroma, overlaid with SVG `<feTurbulence>` grain at < 0.1 opacity. *Not* aurora; *not* purple-to-cyan mesh; *not* floating orbs. The point is *texture you can barely see* — paper-quality, not decoration.
@@ -193,6 +205,8 @@ A two-colour CSS gradient at low chroma, overlaid with SVG `<feTurbulence>` grai
 - Gradient direction (45° / 135° / radial)
 - Grain amount (off · subtle · textured)
 - Animation (none · slow drift · scroll-linked parallax)
+
+**Example.** A small podcast site (when the host wants more visual heat than Tide's typography-only quote). Two-stop CSS gradient at 135° (warm-cream → barely-orange, both at < 0.04 chroma) over the *hero only* — never page-wide. SVG `<feTurbulence>` grain overlay at 0.06 opacity, `mix-blend-mode: multiply`. No animation. Resists every aurora-blob temptation.
 
 ```html
 <section class="hero hero--bg">
@@ -225,6 +239,8 @@ A two-colour CSS gradient at low chroma, overlaid with SVG `<feTurbulence>` grai
 ### E8 · Hero Photography — single tightly-cropped image
 
 Existing H6 archetype in the cookbook. Cross-referenced here for completeness. See [`component-cookbook.md`](component-cookbook.md) for variation knobs.
+
+**Example.** A small Lisbon café. One tightly-cropped photograph of the espresso machine at dawn, 4/3 ratio, no full-bleed. Caption sits margin-aligned at lower-left in mono small-caps ("Plate 04 · 6:42 a.m."). The photograph is desaturated 8 % from the source to harmonise with the page's warm-paper tone. Always pair photography with a tone-matched typography pairing (see [`typography.md`](typography.md)) — a luxury-tone photo on a brutalist page jars.
 
 ---
 

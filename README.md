@@ -28,7 +28,7 @@ The differentiator: Hallmark insists on **structural variety**, not just visual 
 
 ## What's inside
 
-- **[`SKILL.md`](skill/SKILL.md)** — the routing file. Design flow, slop test (33 questions), output contract.
+- **[`SKILL.md`](skill/SKILL.md)** — the routing file. Design flow (six steps, including `Step 2.5 · Check project memory` reading `.hallmark/log.json`), slop test (35 questions), output contract.
 - **[`references/`](skill/references/)** — sixteen short, opinionated rule files: typography, colour, layout, motion, microinteractions, interaction-and-states, responsive, copy, anti-patterns, the 21 named macrostructures, the 36 component archetypes with variation knobs, the 6 primitive structure axes, the vision-extraction protocol for `study`, and three new files for hero work — `hero-enrichment.md` (when to add visuals to a hero, plus eight enrichment archetypes), `custom-craft.md` (how to hand-build CSS art, SVG, declarative animation, JS-driven motion, with Lottie demoted to last resort), and `assets.md` (sourcing canon for icons, brand logos, generated illustration via Nanobanana / Recraft, library illustration, app mockups, hero video, photography, abstract backgrounds).
 - **[`site/`](site/)** — a self-demonstrating landing page. Hand-written HTML + CSS + ES module, no framework, no build step. **Sixteen themes** — Specimen, Newsprint, Atelier, Garden, Salon, Linen, Almanac, Midnight, Terminal, Brutal, Manifesto, Sport, Studio, Pastel, Riso, **Quiet** — that swap not just colour and typography but the page's hero archetype and footer archetype. Switching themes literally rebuilds the page.
 - **[`ROADMAP.md`](ROADMAP.md)** — Tier 1, 2, 3 work plus an explicit "things to *not* do" list.
@@ -60,7 +60,10 @@ Press `T` to cycle themes, `R` for random, `?theme=studio` for a shareable link.
 - **Macrostructures over axes.** Pick one of 21 named whole-page shapes wholesale; the macrostructure stamp lives in the CSS comment, so the next Hallmark run picks something different.
 - **Within-archetype variation.** Two Bento Grids should not be twins; each archetype has 2–3 picked-per-output knobs.
 - **Microinteractions as discipline.** Silent success over celebratory toasts. Optimistic update + Undo over confirm dialogs. Hover delay 800 ms, focus delay 0 ms.
-- **A 33-gate slop test** runs before every output. One yes fails the build.
+- **A 35-gate slop test** runs before every output. One yes fails the build. New gates 34 (different-knobs check across runs) and 35 (aria-label / aria-hidden on every visual-only SVG / canvas / div).
+- **Project memory.** A per-project `.hallmark/log.json` records each run's macrostructure + theme + enrichment + brief summary. The skill reads the last 3–5 entries before picking, and writes a new entry after each build, so consecutive Hallmark outputs in the same project don't repeat shapes or themes.
+- **Theme-diversification rule.** Two consecutive themes must differ on at least one of three axes: paper band (dark / mid / light), display style (italic-serif / roman-serif / geometric-sans / mono / display-condensed-italic / display-heavy / system-native / risograph), accent hue (warm / cool / neutral / chromatic). Specimen-fall-through is no longer the only diversification check.
+- **Voice fixtures over LLM defaults.** Each of the 21 macrostructures ships with 2–3 example opening lines from real designer-engineer sites (Pentagram, Klim, Linear, Are.na, Resend, Lynn Fisher, Rauno Freiberg, etc.). Each of seven tones in `copy.md` has three voice patterns × five sample sentences. "Built for the modern team" is in the banned-phrases list.
 - **Hero enrichment is opt-in, not a default.** A typographic-only hero is always acceptable. When enrichment is right, the skill picks from a six-tier hierarchy: typography only → custom-built CSS art → hand-built SVG → generated illustration (Nanobanana / Recraft) → library + customise → Lottie (last resort).
 - **`study` extracts DNA, not pixels.** Vision-extraction with refusal heuristics, type-role vocabulary (no font ID guessing), and a confirmation step before any code.
 
