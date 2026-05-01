@@ -1045,9 +1045,7 @@
 
 .easter__line:nth-child(1) { animation-delay: 180ms; }
 .easter__line:nth-child(2) { animation-delay: 380ms; }
-.easter__line:nth-child(3) { animation-delay: 560ms; }
-.easter__line:nth-child(4) { animation-delay: 720ms; }
-.easter__line:nth-child(5) { animation-delay: 1000ms; }
+.easter__line:nth-child(3) { animation-delay: 700ms; }
 
 @keyframes easter-line {
   to { opacity: 1; transform: none; }
@@ -1099,7 +1097,7 @@
   vertical-align: -0.08em;
   opacity: 0;
   animation: easter-blink 1.05s steps(2) infinite;
-  animation-delay: 1.4s;
+  animation-delay: 1.15s;
 }
 
 @keyframes easter-blink {

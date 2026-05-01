@@ -577,9 +577,9 @@ if (shuffleBtn) {
 const easterEl = document.querySelector("[data-easter-egg]");
 const EASTER_WINDOW_MS = 3200;
 const EASTER_THRESHOLD = 12;       // ≈ 3.8 presses/sec
-const EASTER_VISIBLE_MS = 4200;    // total time the overlay stays up
+const EASTER_VISIBLE_MS = 3400;    // total time the overlay stays up
 const EASTER_FADE_MS = 360;        // matches the fade-out animation
-const EASTER_COOLDOWN_MS = 30000;
+const EASTER_COOLDOWN_MS = 15000;
 const EASTER_PUNCHLINES = [
   "chill, designer.",
   "you've seen them all.",
