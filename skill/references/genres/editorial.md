@@ -51,10 +51,20 @@ Each macrostructure under editorial picks from these opening-line patterns. Imit
 - *"We compose the page like a broadsheet — hairlines, columns, restraint."*
 - *"Restraint, repeated, becomes a signature."*
 
+## Nav and footer voice
+
+- **Default nav:** N6 Newspaper masthead — full-width, large centred wordmark, thin issue/date row in serif small caps, double-rule below. Reads as broadsheet.
+- **Acceptable also:** N1 Wordmark + 2 links (when destinations are minimal); N9 Edge-aligned minimal (when the page is letter-shaped or atelier-quiet).
+- **Default footer:** Ft1 Mast-headed (wordmark anchors a single horizontal band, tagline + small links beside).
+- **Acceptable also:** Ft2 Inline single line; Ft4 Dense colophon (newsprint / almanac voices); Ft6 Letter close (atelier / garden / personal); Ft7 Newsletter-first (when the brand legitimately publishes).
+- **Banned for editorial:** N5 Floating pill (modern-minimal vocabulary), N7 Brutal slab (fights the restraint), Ft8 Marquee scroll (kinetic; wrong genre).
+
+See [`component-cookbook.md`](../component-cookbook.md) § Navigation and § Footers for the full archetypes + code.
+
 ## Stamp signature
 
 Output's CSS comment header reads:
 
 ```css
-/* Hallmark · genre: editorial · macrostructure: <name> · theme: <name> · enrichment: <tier> */
+/* Hallmark · genre: editorial · macrostructure: <name> · theme: <name> · enrichment: <tier> · nav: <N#> · footer: <Ft#> */
 ```

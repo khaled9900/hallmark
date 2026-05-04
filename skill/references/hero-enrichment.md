@@ -244,6 +244,136 @@ Existing H6 archetype in the cookbook. Cross-referenced here for completeness. S
 
 ---
 
+## Hero shape polish — patterns beyond enrichment
+
+The eight enrichment archetypes above (E1–E8) decide *what sits next to the headline*. The four polish patterns below decide *how the headline itself sits* — they affect layout, type, motion, not decoration on top. They are admissible on top of any hero macrostructure (Marquee Hero, Stat-Led, Quote-Led, Letter, Photographic, Clipped). Pick one polish pattern when the hero feels shape-flat — colour-only, symmetric, predictable.
+
+You can ship a hero with one polish pattern *and* one enrichment archetype, but never two polish patterns at once. The hero is a high-stakes surface; one structural choice carries it.
+
+### HP1 · Vertical-rail title
+
+The wordmark or a pull-label runs *vertically* alongside the centred body. CSS: `writing-mode: vertical-rl; text-orientation: mixed;` on the rail; the body sits in normal flow beside it. Reads as studio · atelier · editorial — Japanese-print rhythm, hand-set page furniture.
+
+*Use when:* the hero is otherwise centred or marquee-shaped and the page wants a structural anchor that isn't a rule or a numeral.
+*Avoid when:* the body title is itself big and centred — vertical rail beside huge horizontal display reads as competing axes; pick one direction.
+
+```html
+<header class="hero hero--rail">
+  <p class="hero__rail" aria-hidden="true">STUDIO · 2026 · WORK · LETTERS</p>
+  <div class="hero__body">
+    <h1 class="hero__display">A working archive.</h1>
+    <p class="hero__lede">Twelve years. Selected projects, in their own time.</p>
+  </div>
+</header>
+```
+```css
+.hero--rail { display: grid; grid-template-columns: auto 1fr; gap: var(--space-2xl); padding: var(--space-2xl) var(--page-gutter); align-items: end; }
+.hero__rail { writing-mode: vertical-rl; text-orientation: mixed; font-family: var(--font-display); font-size: var(--text-sm); letter-spacing: 0.18em; color: var(--color-ink-2); margin: 0; }
+@media (max-width: 60rem) { .hero--rail { grid-template-columns: 1fr; } .hero__rail { writing-mode: horizontal-tb; font-size: var(--text-xs); } }
+```
+
+*Anti-pattern:* vertical text *and* horizontal display title competing at the same scale. Pick one direction; the rail is supporting voice.
+
+### HP2 · Marquee-overflow
+
+The H1 is intentionally larger than the viewport — `overflow-x: clip` on the hero container; the title bleeds past the right edge. Reads as manifesto · brutal · sport — the headline is loud enough that the page can't contain it.
+
+*Use when:* the genre is playful (Brutal, Manifesto, Sport) and the title is *short* (≤ 6 words). Long titles + overflow = noise.
+*Avoid when:* the title carries legal information that must be readable in full (privacy notice, terms page).
+
+```html
+<header class="hero hero--overflow">
+  <h1 class="hero__display hero__display--xxl">STOP MAKING UI THAT LOOKS LIKE EVERYONE ELSE'S UI.</h1>
+  <p class="hero__lede">Hallmark. A design skill that refuses defaults.</p>
+</header>
+```
+```css
+.hero--overflow { overflow-x: clip; padding: var(--space-2xl) var(--page-gutter); }
+.hero__display--xxl { font-family: var(--font-display); font-weight: 800; font-size: clamp(4rem, 14vw, 14rem); line-height: 0.92; letter-spacing: -0.04em; margin: 0; white-space: nowrap; }
+@media (max-width: 60rem) { .hero__display--xxl { white-space: normal; font-size: clamp(2.5rem, 10vw, 5rem); } }
+```
+
+*Anti-pattern:* `overflow-x: hidden` on `<html>` or `<body>` at the same time as this hero — the clip breaks horizontal scroll behaviour for descendants. Use `overflow-x: clip` only, scoped to the hero container.
+
+### HP3 · Cursor-spotlight
+
+A radial-gradient background that tracks `mousemove`, scoped to the hero only. Reads as atmospheric · modern-minimal SaaS — Linear, Tailwind Labs, Raycast.
+
+*Use when:* the page is atmospheric / dark-paper / SaaS marketing, the hero has empty surface to play under, and the brand voice can carry "tactile, alive".
+*Avoid when:* the cursor would track over content (text, buttons) — pulls focus from reading. Scope the spotlight to a backdrop layer beneath text, never over it.
+
+```html
+<header class="hero hero--spotlight">
+  <div class="hero__spotlight" aria-hidden="true"></div>
+  <div class="hero__body">
+    <h1 class="hero__display">Distributed tracing that explains itself.</h1>
+    <p class="hero__lede">Open one trace. See the whole story.</p>
+  </div>
+</header>
+```
+```css
+.hero--spotlight { position: relative; isolation: isolate; padding: var(--space-2xl) var(--page-gutter); overflow: hidden; }
+.hero__spotlight { position: absolute; inset: 0; z-index: -1; background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 30%), color-mix(in oklch, var(--color-accent) 22%, transparent), transparent 60%); transition: background 200ms var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { .hero__spotlight { transition: none; --mx: 50%; --my: 30%; } }
+```
+```js
+// Scope to hero only — never page-wide.
+const hero = document.querySelector('.hero--spotlight');
+hero?.addEventListener('pointermove', (e) => {
+  const r = hero.getBoundingClientRect();
+  hero.style.setProperty('--mx', `${e.clientX - r.left}px`);
+  hero.style.setProperty('--my', `${e.clientY - r.top}px`);
+});
+```
+
+*Anti-pattern:* tracking the cursor across the *whole page* — nausea-inducing, focus-stealing. Scope to hero only. The reduced-motion fallback must pin the gradient to a sensible static position (50% / 30%), not just disable the effect (which would leave a flat surface).
+
+### HP4 · Decorative-numeral
+
+A huge edition number / year / chapter glyph set in display-italic in a hero corner. The numeral *means something* — issue 22, year 2026, chapter 03, version 0.8. Reads as editorial · salon · newsprint · almanac.
+
+*Use when:* the page genuinely has an edition / issue / chapter / version semantic — magazines, journals, archived work, dated essays.
+*Avoid when:* the numeral has no semantic anchor. A random "42" in the corner reads as decoration, which is slop (see slop-test gate 55).
+
+```html
+<header class="hero hero--num">
+  <p class="hero__eyebrow">Studio · Spring 2026</p>
+  <h1 class="hero__display">A working archive.</h1>
+  <p class="hero__lede">Twelve years. Selected projects, in their own time.</p>
+  <span class="hero__num" aria-hidden="true">22</span>
+</header>
+```
+```css
+.hero--num { position: relative; padding: var(--space-2xl) var(--page-gutter) var(--space-3xl); overflow: hidden; }
+.hero__num { position: absolute; right: var(--page-gutter); bottom: -0.15em; font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: clamp(8rem, 22vw, 18rem); line-height: 1; color: color-mix(in oklch, var(--color-ink) 8%, transparent); pointer-events: none; user-select: none; }
+@media (max-width: 60rem) { .hero__num { font-size: clamp(5rem, 26vw, 9rem); right: -0.1em; } }
+```
+
+*Anti-pattern:* numerals that mean nothing. The numeral must carry information — issue, year, version, chapter, plate. If you can't name what the number *is*, drop it.
+
+---
+
+## Hero space discipline
+
+Every hero — enriched or not, polished or not — obeys these rules.
+
+- **Footprint.** The hero takes 70–90 % of the first viewport's height — no more, no less. `min-height: 100vh / 100dvh` is the AI fingerprint (gate 7); a hero that's only 20 % of the viewport feels like a header. Aim for `min-height: clamp(60vh, 75dvh, 88dvh)` and let content settle inside.
+- **Asymmetric padding.** `padding-block-end` ≥ 1.3× `padding-block-start`. The hero sits *into* the page; symmetric padding floats. Slop-test gate 54 enforces this.
+- **Never centre everything.** Eyebrow + title + lede + CTA all stacked centred is the AI fingerprint. Pick at most *two* centred elements; break alignment for the others. Gate 53 enforces this. Centred-narrow heroes are admissible only when the genre is editorial / salon / atelier *and* the eyebrow or CTA breaks alignment.
+- **Entrance animation.** Pick one of {fade, sweep, none} per element — never both fade *and* sweep on the same element. Duration ≤ 220 ms. Disable on `prefers-reduced-motion: reduce`. Cross-reference the "One orchestrated reveal per page" rule below.
+- **Headline typography.** Prefer one display weight + tight tracking (-0.02em to -0.04em) over default 0; line-height 0.95–1.05 for display, never 1.2 (which inherits the body line-height and reads as un-set type). Avoid two display weights on the same headline (a `<strong>` in a different weight inside the title is AI's idea of "emphasis"; pick one weight, let the words carry).
+- **One polish pattern, max.** HP1–HP4 are mutually exclusive on a single hero. A vertical rail *and* a marquee-overflow *and* a cursor spotlight *and* a decorative numeral on one hero is a panic attack. Pick one.
+
+The decision sequence:
+
+1. Pick the hero macrostructure (Marquee Hero, Stat-Led, Quote-Led, Letter, Photographic, Clipped) — see [`macrostructures.md`](macrostructures.md).
+2. Pick zero-or-one **enrichment archetype** (E1–E8 above).
+3. Pick zero-or-one **polish pattern** (HP1–HP4 above).
+4. Apply the space discipline rules.
+5. Stamp the choices into the macrostructure stamp.
+
+---
+
 ## Animation discipline (hero specifically)
 
 Cross-references [`motion.md`](motion.md), [`microinteractions.md`](microinteractions.md), and [`custom-craft.md`](custom-craft.md). The hero is the highest-stakes animation surface on the page; the rules are tighter here than elsewhere.
@@ -293,10 +423,14 @@ When you ship enrichment, the macrostructure stamp records the choice:
 ```css
 /* Hallmark · macrostructure: Marquee Hero · H1 hero knobs: size=xxl, alignment=left-bias
  * enrichment: E1 Clipped-Edge Video · clip=right, aspect=16/10, frame=hairline
+ * polish: HP3 Cursor-spotlight (scoped to hero, reduced-motion fallback pinned at 50%/30%)
+ * nav: N5 Floating pill · footer: Ft5 Statement
  * craft: tier-A CSS art (no real video — pure custom-built mockup)
  * theme: Pastel · accent: indigo ~3% · studied: no
  */
 ```
+
+If no polish pattern is used, omit the `polish:` line — don't fake it. Same for enrichment.
 
 This signals to future Hallmark runs (and to the audit verb) what was chosen and how. It also lets the user see the inferences in one place and redirect if anything's off.
 

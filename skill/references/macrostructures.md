@@ -10,6 +10,16 @@ Before picking, check the target codebase for a `/* Hallmark · macrostructure: 
 
 When the brief is vague (no theme, no tone), pick from the *first ten* below before reaching for anything in 11–21. The first ten are deliberately the strongest non-Specimen shapes; they cover ~80% of briefs.
 
+## Hero polish patterns
+
+The hero macrostructures (Marquee Hero · Stat-Led · Quote-Led · Letter · Photographic · Clipped) admit one optional **polish pattern** on top of their base shape — HP1 Vertical-rail · HP2 Marquee-overflow · HP3 Cursor-spotlight · HP4 Decorative-numeral. Polish patterns are *structural* (layout / type / motion), not decorative; they live alongside the hero macrostructure rather than replacing it. See [`hero-enrichment.md`](hero-enrichment.md) § Hero shape polish for the catalogue + when each one fits.
+
+A hero may carry one enrichment archetype (E1–E8) AND one polish pattern (HP1–HP4) — but never two polish patterns at once. The decision sequence is: macrostructure → enrichment? → polish? → space discipline.
+
+## Nav and footer voice
+
+Each macrostructure also implies a **nav archetype** (N1–N9) and a **footer archetype** (Ft1–Ft8). The defaults sit in the routing tables in [`component-cookbook.md`](component-cookbook.md) § Navigation and § Footers. Don't ship a hero macrostructure without picking nav + footer alongside — they are part of the page shape, not optional chrome.
+
 ---
 
 ## 01 · Bento Grid

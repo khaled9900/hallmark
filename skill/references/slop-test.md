@@ -1,4 +1,4 @@
-# Slop test — 50 gates
+# Slop test — 55 gates
 
 Run this list before handing back any output. Every answer must be **no**. Update the Step 5 preview block's `Slop test` row to reflect the actual outcome of this run.
 
@@ -112,6 +112,22 @@ Thresholds:
 50. Does any **dark section** (a section or panel whose `background-color` has OKLCH lightness < 50 %) carry text that uses the page-default `color: var(--color-ink)` — i.e. ink-on-ink in a section that flipped its surface? Sections that swap to a dark surface MUST also swap their text colour (typically to `--color-paper`) and ensure nested children inherit. The fix is explicit: any class that sets `background: <dark>` must also set `color: <light>` in the same rule, OR be wrapped in a parent that does. The most common failure: a `.vs__col:first-child` painted with the accent or ink colour but the inner panels still using default ink-coloured text.
 
 The CSS stamp at Step 6 should record the result: `· contrast: pass (46–50)` if all five gates pass, or `· contrast: FAIL gates <list>` if any are open. Fix before shipping.
+
+## Nav · footer · hero structural slop
+
+Universal — apply to every genre. These gates catch the most-recognised AI fingerprints in nav, footer, and hero shape. They sit alongside the structural-fingerprint gate (gate 9): gate 9 catches the *page* fingerprint; 51–55 catch the *chrome* fingerprints that sit on top of it.
+
+51. **Nav fingerprint.** Is the page's `<nav>` (or top-of-page `<header>` with role="banner") the AI default — wordmark-left + 4–5 inline text links centred-or-right + button-right at full viewport width + 1 px hairline border-bottom + white background? If yes, fail unless the brief explicitly justifies N1 (the page has only 2 destinations *and* the routing table for the genre allows N1). Hallmark output should rotate among N1, N3, N4, N5, N6, N7, N8, N9 from [`component-cookbook.md`](component-cookbook.md) § Navigation.
+
+52. **Footer fingerprint.** Is the `<footer>` the AI default — 4 columns of links (Product / Company / Resources / Legal) + social-icon row + tiny copyright at the very bottom + 1 px hairline top-border + neutral grey background? If yes, fail unless the page is a genuine docs root or hub. Default to Ft1, Ft2, Ft4, Ft5, Ft6, Ft7, or Ft8 from [`component-cookbook.md`](component-cookbook.md) § Footers.
+
+53. **Hero centred-everything.** Are eyebrow, title, lede, AND CTA all stacked centred on the same vertical axis? Auto-fail. Pick at most two centred elements; break alignment for the others. Centred-narrow heroes are admissible *only* on editorial / salon / atelier voice, and even then the eyebrow or CTA should sit off-axis (margin-aligned, right-flush, or numeral-anchored).
+
+54. **Hero padding asymmetry.** Is `padding-block-end` ≥ 1.3× `padding-block-start` on the hero container? If hero pads symmetrically (or pads *more* on top), it floats off the page. Hero must sit *into* the page — heavier bottom padding pulls it down into the next section's rhythm. Compute on the rendered output's hero element.
+
+55. **Decorative-without-purpose.** Does the hero contain a decorative element (cursor, scanline, gradient blob, abstract shape, ornament, badge, sticker) that has no semantic anchor in the content? Fail. Decoration must be motivated: a cursor inside a typed command (signals "you'd type next"), a numeral that names an issue / year / version / chapter, a gradient that responds to interaction (HP3 cursor-spotlight), a stamp that names an authorship or date. Random ornaments — a "42" in the corner with no edition meaning, a cursor floating beside a hero, a Pantone chip with no colour rationale — are slop.
+
+The CSS stamp at Step 6 should record the result alongside contrast: `· nav: N# · footer: Ft# · slop: pass (51–55)`. If any of 51–55 fail, fix before shipping.
 
 ---
 

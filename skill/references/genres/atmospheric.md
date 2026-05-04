@@ -44,10 +44,20 @@ Brief mentions any of: *AI tool, generative, music, video, image, voice, late-ni
 - *"Generate, refine, ship — between Tuesday and Wednesday."*
 - *"The instrument is dark. The output is yours."*
 
+## Nav and footer voice
+
+- **Default nav:** N5 Floating pill — the blur backdrop sells the atmospheric mood. The pill sits over the dark canvas and the bloom shows through the blur.
+- **Acceptable also:** N9 Edge-aligned minimal (when the canvas is loud enough that nav should disappear into it); N4 ⌘K-only (when the audience is technical).
+- **Default footer:** Ft5 Statement — closes the page with a sentence. Atmospheric pages argue something; the footer states it.
+- **Acceptable also:** Ft1 Mast-headed; Ft2 Inline single line.
+- **Banned for atmospheric:** N6 Newspaper masthead (editorial vocabulary); N7 Brutal slab (fights the calm); Ft8 Marquee scroll (kinetic, breaks the dark canvas); Ft3 Index columns (AI-footer fingerprint).
+
+See [`component-cookbook.md`](../component-cookbook.md) § Navigation and § Footers for the full archetypes + code.
+
 ## Stamp signature
 
 ```css
-/* Hallmark · genre: atmospheric · macrostructure: <name> · theme: <name> · enrichment: <tier> */
+/* Hallmark · genre: atmospheric · macrostructure: <name> · theme: <name> · enrichment: <tier> · nav: <N#> · footer: <Ft#> */
 ```
 
 ## Reference register

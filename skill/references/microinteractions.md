@@ -31,7 +31,7 @@ For default-on, pick **two or three** from this menu (never more than three prim
 | **Marquee scroll** | Marquee Hero, customer-logo strip | `@keyframes marquee` `translateX(-100%)` over 40–60 s, infinite. Pauses on hover. Reduced-motion: stops the scroll, shows the first three items. |
 | **Stagger reveal** | Testimonials, feature cards, gallery | IntersectionObserver fires on each card; 100 ms stagger; opacity 0 → 1 + `translateY(8px → 0)`; `--ease-out` 400 ms. **One-shot only — never re-fires on scroll.** |
 | **Recommended-tier pulse** | The middle pricing tier | One-shot `@keyframes pulse-border` 2 s, runs once on viewport entry. Subtle: opacity 0.4 → 1 → 0.4 on the border. Don't loop. |
-| **Caret blink** | Terminal hero, code mockup | `@keyframes blink` 1 s steps(2) infinite on a 1ch-wide block. Reduced-motion: solid block, no blink. |
+| **Caret blink** | *Inside* a typed command (install code, terminal nav, code mockup) — never as standalone decoration | `@keyframes blink` 1 s steps(2) infinite on a 1ch-wide block, placed at the end of a typed command line so it reads as a "you'd type next" affordance. Reduced-motion: solid block, no blink. **Hard rule:** the caret must sit inside `<pre class="code">…▮</pre>` or an N8 Terminal nav line — never as a standalone `<span>` floating in a hero. |
 | **Number tick on data update** | Dashboard live values | See *Number tick* recipe below. |
 
 ### Hard rules for default-on motion
@@ -232,7 +232,7 @@ Microinteractions adapt to the theme. The same button press is louder in Brutal 
 | Garden | 1.2× | `--ease-out` | Calm. Springs welcome. |
 | Atelier | 1.3× | `--ease-out` (very gentle) | Generous; almost no movement. |
 | Newsprint | 0× | none | Static. Print metaphor. |
-| Terminal | 0× | none, except cursor blink | Print + monospace metaphor. |
+| Terminal | 0× | none, except caret blink *inside* a typed command (N8 nav, install code) | Print + monospace metaphor. **No standalone blinking cursor** — see the Caret blink row above. The caret only blinks where the user would type. |
 | Manifesto | 0.7× | `--ease-out` (sharp) | Snap into place. |
 | Salon | 1.4× | `--ease-out` (very gentle) | Softest. |
 | Linen | 1.2× | `--ease-out` | Calm. |

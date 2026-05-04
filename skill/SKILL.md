@@ -59,6 +59,8 @@ If two signals fire, route component. If only the page flow fires (multi-section
 ### What Component-scope skips
 
 - **Step 2 · Macrostructure pick.** Components don't have macrostructures. State this explicitly: *"Component-scope: skipping macrostructure."*
+- **Nav and footer archetype picks.** N1–N9 and Ft1–Ft8 are page-scope only. A component is one element; it has no nav, no footer. Skip both.
+- **Hero polish patterns (HP1–HP4).** Page-scope only. A button or card has no hero.
 - **Step 4 · Enrichment.** No hero illustration, no demo video, no abstract background. The component IS the artifact.
 - **Step 5 · Multi-section preview.** Replaced by the 8-state demo wrapper (below).
 - **Project-memory append.** No `.hallmark/log.json` entry for component runs. The diversification rule doesn't apply.
@@ -242,6 +244,12 @@ If the brief is genuinely vague (no theme, no tone), do **not** default. Offer t
 
 The macrostructure picks five of the six structural axes for you; you only need to pick the reveal yourself. The deeper axis catalogue is still in [`references/structure.md`](references/structure.md) when you need to deviate from the macrostructure's defaults.
 
+**Pick a nav archetype (N1–N9) and a footer archetype (Ft1–Ft8) at this step.** They are not optional chrome; they are part of the page's structural fingerprint. Read the routing tables in [`references/component-cookbook.md`](references/component-cookbook.md) § Navigation and § Footers — the genre's default plus the acceptable alternates. State both picks alongside the macrostructure: *"Macrostructure: Marquee Hero. Nav: N5 Floating pill. Footer: Ft5 Statement. Theme: Bloom."*
+
+**Default away from N1 and Ft3.** N1 (wordmark + 4–5 inline links + button-right at full width) and Ft3 (4 columns of links + social row + tiny copyright) are the most-recognised AI fingerprints. Reach for N5–N9 and Ft1/Ft2/Ft4/Ft5/Ft6/Ft7/Ft8 by default; reach for N1 only when the page genuinely has 2 destinations and the genre allows it; reach for Ft3 only on a genuine docs root or hub.
+
+**Diversification extends to nav + footer.** Across consecutive Hallmark runs in the same project session (per `.hallmark/log.json`), no two outputs should share the same nav archetype OR the same footer archetype. If the previous run used N5 + Ft5, the next picks N6/N7/N8/N9 + Ft1/Ft2/Ft4/Ft6/Ft7/Ft8 from the routing tables. The nav and footer picks are recorded in the macrostructure stamp at Step 6.
+
 ### 2.5. Check project memory
 
 If the project has a `.hallmark/log.json` file (created by previous Hallmark runs), **read it before** picking the macrostructure or theme. The schema is a JSON array, newest entry first:
@@ -289,7 +297,7 @@ By the time you reach this step, one of three things is true:
 
 **Custom is a quiet branch, not a default question.** Most briefs route to catalog and the user never sees the words "catalog" or "custom." The 22 named themes plus the rotation rule already deliver structural variety; the fork is reserved for when the brief specifically asks for a tuned look the catalog can't carry.
 
-A custom theme is a **complete** OKLCH palette + font pairing tuned to the brief — not a one-off colour swap, not an excuse to bypass the rules. Every constraint in [`color.md`](references/color.md), [`typography.md`](references/typography.md), and [`anti-patterns.md`](references/anti-patterns.md) still applies. The 50 slop-test gates fire unchanged. The Step 5 preview block surfaces the palette + pairing in plain text **before** any code is emitted, so the user can redirect.
+A custom theme is a **complete** OKLCH palette + font pairing tuned to the brief — not a one-off colour swap, not an excuse to bypass the rules. Every constraint in [`color.md`](references/color.md), [`typography.md`](references/typography.md), and [`anti-patterns.md`](references/anti-patterns.md) still applies. The 55 slop-test gates fire unchanged. The Step 5 preview block surfaces the palette + pairing in plain text **before** any code is emitted, so the user can redirect.
 
 The diversification rule is theme-route-blind: a custom run that follows another custom (or a catalog) must differ on at least one of the three axes from the previous entry, same as catalog-vs-catalog. Custom entries record their three axes explicitly into `.hallmark/log.json` (see [`custom-theme.md`](references/custom-theme.md) § F).
 
@@ -357,7 +365,7 @@ Before emitting any code, output a tight summary of what you're about to ship. T
 - **Enrichment** · none (typography only)
 - **Sections** · Hero · Logos · Stats · Features · Testimonials · Pricing · FAQ · CTA · Footer
 - **Motion** · counter · pricing-lift · pulse-once
-- **Slop test** · 50 / 50 ✓ (run after Build)
+- **Slop test** · 55 / 55 ✓ (run after Build)
 - **Diversification** · differs from Pastel on display style + accent hue
 ```
 
@@ -368,7 +376,7 @@ Before emitting any code, output a tight summary of what you're about to ship. T
 3. **Enrichment** — the chosen archetype + tier, or *none (typography only)*.
 4. **Sections** — section names separated by ` · `, in DOM order.
 5. **Motion** — microinteraction primitives separated by ` · `, or *none — typography only*. Always under three primitives per the [`microinteractions.md`](references/microinteractions.md) hard rules.
-6. **Slop test** — `50 / 50 ✓` if all gates pass, or `N / 50 — fails: <gate numbers>` if any are open. Run the slop test BEFORE writing this row; the slop test is Step 7.
+6. **Slop test** — `55 / 55 ✓` if all gates pass, or `N / 55 — fails: <gate numbers>` if any are open. Run the slop test BEFORE writing this row; the slop test is Step 7.
 7. **Diversification** *(optional, only when `.hallmark/log.json` has prior entries)* — what axes differ vs the previous run.
 
 **Three more sample preview blocks** for the model to imitate, varied across macrostructure types:
@@ -381,7 +389,7 @@ Before emitting any code, output a tight summary of what you're about to ship. T
 > - **Enrichment** · Tier-B hand-built SVG (a 60-line coffee bean with `@property --rise` 6 s breathing-loop)
 > - **Sections** · Masthead · Letter · Three Notes · Visit · Colophon
 > - **Motion** · breathing-loop on bean only (respects `prefers-reduced-motion`)
-> - **Slop test** · 50 / 50 ✓
+> - **Slop test** · 55 / 55 ✓
 > - **Diversification** · first run for this project
 
 *Bento Grid (SaaS, motion-on):*
@@ -392,7 +400,7 @@ Before emitting any code, output a tight summary of what you're about to ship. T
 > - **Enrichment** · E1 Clipped-Edge Demo Video, Tier-A CSS-art trace waterfall
 > - **Sections** · Hero · 6-tile Bento (stat · sparkline · quote · code · integrations · spotlight) · Index Footer
 > - **Motion** · counter · pricing-lift · CSS marquee on integrations strip
-> - **Slop test** · 50 / 50 ✓
+> - **Slop test** · 55 / 55 ✓
 > - **Diversification** · differs from Plain on paper hue (light-cool vs pure-white) + accent (indigo vs ink-blue)
 
 *Manifesto (declarative, no enrichment):*
@@ -403,7 +411,7 @@ Before emitting any code, output a tight summary of what you're about to ship. T
 > - **Enrichment** · none (typography only — voice carries the brand)
 > - **Sections** · Masthead · Title · Five Declarations · Bleed Band · What We Refuse · Working Rules · Practice · Reading · Colophon
 > - **Motion** · none — typography only
-> - **Slop test** · 50 / 50 ✓
+> - **Slop test** · 55 / 55 ✓
 > - **Diversification** · differs from Linen on paper band (dark vs light) + display style (display-heavy vs geometric-sans)
 
 *Custom (Coffeebox archival café):*
@@ -414,7 +422,7 @@ Before emitting any code, output a tight summary of what you're about to ship. T
 > - **Enrichment** · Tier-A pure-CSS coffee bean (60-line SVG, breathing-loop optional)
 > - **Sections** · Masthead · Letter · Three Notes · Visit · Colophon
 > - **Motion** · breathing-loop on bean (with reduced-motion fallback)
-> - **Slop test** · 50 / 50 ✓
+> - **Slop test** · 55 / 55 ✓
 > - **Diversification** · custom axes: light / italic-serif / chromatic-terracotta — differs from previous catalog Linen on accent hue + display style
 
 If any slop-test gate fails when you reach Step 7, return to the relevant Build step, fix it, and **re-emit the preview block** with the corrected slop-test row. The preview is the durable summary; it's wrong to ship if it lies.
@@ -442,7 +450,7 @@ Always:
 
 ### 7. The slop test
 
-Before handing back, run the output through the 50-gate slop test in [`references/slop-test.md`](references/slop-test.md). Every answer must be **no**. Load that file at this step (not earlier — it isn't needed until handoff). The active genre matters: some gates are universal, some are genre-scoped (atmospheric loosens the radial-bloom gate; modern-minimal loosens the zero-chroma neutral gate; etc.). The full per-genre overrides are listed inline in `slop-test.md`.
+Before handing back, run the output through the 55-gate slop test in [`references/slop-test.md`](references/slop-test.md). Every answer must be **no**. Load that file at this step (not earlier — it isn't needed until handoff). The active genre matters: some gates are universal, some are genre-scoped (atmospheric loosens the radial-bloom gate; modern-minimal loosens the zero-chroma neutral gate; etc.). The full per-genre overrides are listed inline in `slop-test.md`.
 
 Run the slop test BEFORE writing the Slop test row in the Step 5 preview block — that row reflects the actual outcome of this step.
 

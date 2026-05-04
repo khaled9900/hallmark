@@ -44,10 +44,20 @@ Brief mentions any of: *fun, consumer, casual, family, kids, friendly, approacha
 - *"For the people who keep things tidy."*
 - *"A small tool, gently opinionated."*
 
+## Nav and footer voice
+
+- **Default nav:** N7 Brutal slab — heavy uppercase wordmark + tracked uppercase links + 2 px border-bottom. The voice is loud but composed.
+- **Acceptable also:** N1 Wordmark + 2 links (when destinations are minimal); N3 Side-rail (when the page is long-scroll and section-numbered, e.g. Studio).
+- **Default footer:** Ft8 Marquee scroll — horizontal repeating tagline + dot separator. Honours `prefers-reduced-motion: reduce`.
+- **Acceptable also:** Ft5 Statement; Ft3 Index columns (only when the page is a hub).
+- **Banned for playful:** N5 Floating pill (modern-minimal vocabulary, fights the loud register); N6 Newspaper masthead (editorial); Ft6 Letter close (warm-quiet voice; wrong genre).
+
+See [`component-cookbook.md`](../component-cookbook.md) § Navigation and § Footers for the full archetypes + code.
+
 ## Stamp signature
 
 ```css
-/* Hallmark · genre: playful · macrostructure: <name> · theme: <name> · enrichment: <tier> */
+/* Hallmark · genre: playful · macrostructure: <name> · theme: <name> · enrichment: <tier> · nav: <N#> · footer: <Ft#> */
 ```
 
 ## Reference register

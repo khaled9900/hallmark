@@ -51,6 +51,15 @@ When you pick an archetype, **state the knob values you chose** in the macrostru
 | **N2 Floating chip** | Anchor: top · bottom · top-right · bottom-left | Content: theme picker · search · navigation | Backdrop: blur · solid · none |
 | **N3 Side-rail** | Side: left · right | Width: 12ch · 16ch · 20ch | Indicator: filled bar · text-only · numbered |
 | **N4 Hidden behind ⌘K** | Trigger: button · keyboard only · both | Surface: modal · sheet · spotlight | Recents: shown · hidden |
+| **N5 Floating pill** | Width: content-sized · max ~720 px · max ~560 px | Backdrop: blur+saturate · solid · subtle gradient | Anchor: top-centred · top-right · top-left |
+| **N6 Newspaper masthead** | Issue line: above wordmark · below wordmark · none | Wordmark size: 3xl · 2xl · xl | Rule: double · single · none |
+| **N7 Brutal slab** | Border weight: 2 px · 3 px · 4 px | Letter-spacing: tracked uppercase · normal | CTA: filled slab · outline block · text-only |
+| **N8 Terminal command** | Prompt: `>` · `$` · `~/$` | Cursor: in-line at end · after final flag · none | Width: full bleed · content · ~80 ch |
+| **N9 Edge-aligned minimal** | CTA shape: outlined · filled pill · text+arrow | Wordmark: serif italic · sans · monospace | Padding-block: tight · default · spacious |
+| **Ft5 Statement** | Sentence width: 28 ch · 38 ch · 50 ch | Wordmark position: under sentence · top-right · none | Rule above meta: hairline · double · none |
+| **Ft6 Letter close** | Signoff: italic · roman · monogram | Postscript: yes · no | Width: 40 ch · 60 ch · 80 ch |
+| **Ft7 Newsletter-first** | Layout: stacked · inline · split (form left · meta right) | Submit style: filled · outline · arrow link | Privacy line: yes · no |
+| **Ft8 Marquee scroll** | Speed: 24 s · 32 s · 48 s | Direction: left · right · alternate (rare) | Glyph: middot · em-dash · slash |
 
 **Anti-pattern:** picking the same knob values across two different outputs is the same kind of templating as picking the same archetype. If your last Bento was `tiles=6, spans=irregular, accent=corner-only`, the next one must change at least one knob.
 
@@ -583,6 +592,117 @@ One large block of text — credits, references, licence, address — in a small
 </footer>
 ```
 
+### Ft5 · Statement
+One large display sentence dominates the footer — a closing line, not a sitemap. Wordmark, minimal links, copyright sit beneath in muted small type. Stripe (older), Mailchimp pre-rebrand, agency portfolio closers.
+*Use when:* the page wants a *closing line* — editorial, manifesto, atmospheric. The sentence pairs with the page's argument.
+*Don't confuse with:* Ft1 Mast-headed (which leads with the wordmark, not a sentence).
+
+```html
+<footer class="foot-stmt">
+  <p class="foot-stmt__line">Build something they'll remember.</p>
+  <div class="foot-stmt__meta">
+    <span class="wordmark">Studio</span>
+    <span class="muted">© 2026 · MIT</span>
+  </div>
+</footer>
+```
+```css
+.foot-stmt { padding: var(--space-2xl) var(--page-gutter) var(--space-xl); display: grid; gap: var(--space-lg); }
+.foot-stmt__line { font-family: var(--font-display); font-size: clamp(1.75rem, 5vw, 3.25rem); line-height: 1.0; letter-spacing: -0.02em; max-width: 28ch; margin: 0; }
+.foot-stmt__meta { display: flex; justify-content: space-between; align-items: baseline; padding-block-start: var(--space-sm); border-top: var(--rule-hair) solid var(--color-rule); }
+```
+
+*Anti-pattern:* using a Statement footer on a docs root or hub. The sentence reads as marketing fluff there; default Ft3 instead.
+
+### Ft6 · Letter close
+Closes the page like a letter — `Yours, the team. 2026.` Optional postscript line beneath. Sets the page as a piece of writing rather than a product.
+*Use when:* the page voice is warm, hand-written, editorial-quiet — Garden, Atelier, Salon, personal sites.
+*Don't confuse with:* Ft1 Mast-headed (which is a wordmark anchor, not a signoff).
+
+```html
+<footer class="foot-letter">
+  <p class="foot-letter__close">Yours,<br><span class="foot-letter__sign">— Studio</span></p>
+  <p class="foot-letter__ps muted">P.S. — letters back welcome at <a href="mailto:hello@studio">hello@studio</a>.</p>
+</footer>
+```
+```css
+.foot-letter { padding: var(--space-2xl) var(--page-gutter); max-width: 60ch; }
+.foot-letter__close { font-family: var(--font-display); font-style: italic; font-size: var(--text-lg); line-height: 1.4; }
+.foot-letter__sign { font-style: normal; font-weight: 600; }
+.foot-letter__ps { font-size: var(--text-sm); margin-top: var(--space-md); }
+```
+
+*Anti-pattern:* using Ft6 on a stat-led / B2B product page — voice mismatch reads as twee. Reserve for genuinely letter-shaped pages.
+
+### Ft7 · Newsletter-first
+The form (label + input + submit) is the *primary* element of the footer; everything else (wordmark, links, copyright) is set in 12 px muted type beneath. Stratechery, Substack-shaped sites, indie magazines.
+*Use when:* the brand legitimately publishes — and the page above the fold has *already* offered a subscription. The footer is a final invitation, not an ambush.
+*Don't confuse with:* Ft1 (which doesn't ask for anything).
+
+```html
+<footer class="foot-news">
+  <form class="foot-news__form" action="/subscribe" method="post">
+    <label for="foot-email">Letters from the studio · monthly</label>
+    <div class="foot-news__row">
+      <input id="foot-email" name="email" type="email" required placeholder="you@domain">
+      <button type="submit" class="cta-fill">Subscribe</button>
+    </div>
+  </form>
+  <p class="foot-news__meta muted">Studio · © 2026 · <a href="/imprint">Imprint</a></p>
+</footer>
+```
+```css
+.foot-news { padding: var(--space-2xl) var(--page-gutter); display: grid; gap: var(--space-lg); max-width: 56ch; }
+.foot-news__form label { display: block; font-size: var(--text-sm); margin-block-end: var(--space-2xs); }
+.foot-news__row { display: flex; gap: var(--space-2xs); }
+.foot-news__row input { flex: 1; min-height: 44px; padding-inline: var(--space-sm); border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-input); background: var(--color-paper); }
+.foot-news__row input:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 1px; }
+.foot-news__meta { font-size: var(--text-xs); }
+```
+
+*Anti-pattern:* Ft7 when the page never said "subscribe" above the fold. The footer is an honest *conclusion*; if you didn't ask, don't ambush. Drop to Ft2 instead.
+
+### Ft8 · Marquee scroll
+A horizontal infinite-scroll line of repeating tagline + dot separator: `STUDIO · 2026 · STUDIO · 2026 · STUDIO · 2026 ·`. Sport-genre sites, fashion lookbooks, brand-forward agencies.
+*Use when:* the brand voice is loud, kinetic, sport-or-manifesto.
+*Don't confuse with:* Ft4 Dense colophon (which is static text).
+
+```html
+<footer class="foot-marquee" aria-label="Footer">
+  <div class="foot-marquee__track" aria-hidden="true">
+    <span>STUDIO · 2026 · STUDIO · 2026 · STUDIO · 2026 · STUDIO · 2026 ·</span>
+    <span>STUDIO · 2026 · STUDIO · 2026 · STUDIO · 2026 · STUDIO · 2026 ·</span>
+  </div>
+  <p class="visually-hidden">Studio · 2026 · MIT licensed</p>
+</footer>
+```
+```css
+.foot-marquee { overflow: hidden; border-top: 2px solid var(--color-ink); }
+.foot-marquee__track { display: flex; gap: var(--space-2xl); white-space: nowrap; padding-block: var(--space-md); animation: foot-marquee 32s linear infinite; }
+.foot-marquee__track span { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.08em; font-size: clamp(1rem, 2.5vw, 1.5rem); }
+@keyframes foot-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .foot-marquee__track { animation: none; } }
+```
+
+*Anti-pattern:* using Ft8 on editorial / quiet contexts — the motion reads as loud. Pair only with playful / sport / manifesto voices, and always honour `prefers-reduced-motion: reduce`.
+
+---
+
+## Routing — which footer fits which genre
+
+| Genre | Default | Also OK |
+| --- | --- | --- |
+| editorial | **Ft1 Mast-headed** | Ft2, Ft4, Ft6, Ft7 |
+| modern-minimal | **Ft2 Inline single line** | Ft1, Ft5 |
+| atmospheric | **Ft5 Statement** | Ft1, Ft2 |
+| playful | **Ft8 Marquee scroll** | Ft5, Ft3 |
+| terminal | **Ft4 Dense colophon** | Ft2 |
+| docs / reference | **Ft3 Index columns** | Ft1 |
+
+**Diversification.** Same rule as nav — across consecutive Hallmark runs in the same session, no two outputs should share the same footer archetype.
+
+**Default away from Ft3.** The 4-column index footer is the AI fingerprint when used reflexively (Product · Company · Resources · Legal + social row + tiny copyright). Reach for Ft3 only when the page is a hub or docs-root with a genuine sitemap; default to Ft1, Ft2, Ft4, Ft5, Ft6, Ft7, or Ft8 otherwise.
+
 ---
 
 ## Navigation
@@ -639,6 +759,140 @@ No visible nav. The user opens a command palette via `⌘K` to get anywhere. Des
 <dialog class="palette">…</dialog>
 ```
 
+### N5 · Floating pill
+A rounded full-pill nav, *visibly detached* from the page edges, sitting ~`var(--space-md)` from the top, soft blur backdrop, soft shadow. Reads as contemporary modern-minimal — Vercel, Linear, Framer, Raycast.
+*Use when:* the page is modern-minimal / atmospheric and the hero has a distinct surface or imagery beneath the pill that the blur can sit over.
+*Don't confuse with:* N1 Wordmark + 2 links (which is full-width); N2 Floating chip (which is corner-anchored).
+
+```html
+<nav class="nav-pill" aria-label="Primary">
+  <a class="wordmark">Studio</a>
+  <ul class="nav-pill__links"><li><a>Catalog</a></li><li><a>Voice</a></li></ul>
+  <a class="cta-fill">Get →</a>
+</nav>
+```
+```css
+.nav-pill {
+  position: fixed; inset: var(--space-md) auto auto 50%;
+  transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: var(--space-md);
+  padding: 0.5rem 0.875rem;
+  background: color-mix(in oklch, var(--color-paper) 78%, transparent);
+  backdrop-filter: blur(14px) saturate(120%);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px -12px oklch(0% 0 0 / 0.18);
+  z-index: 20;
+}
+```
+
+*Anti-pattern:* a "pill" that's ~95 % viewport-wide is just a full-width nav with rounded ends — defeats the point. The pill must be visibly detached and content-sized; if your link list pushes it past ~720 px, drop a link or switch to N1.
+
+### N6 · Newspaper masthead
+Full-width header, large centred wordmark on the top row, thin issue/date line above or below in serif small caps, optional inline link row beneath, double-rule below the whole thing. Reads as editorial, broadsheet — NYT, FT, Vogue.
+*Use when:* the page is editorial, magazine-shaped, or framed as an issue / edition.
+*Don't confuse with:* N1 Wordmark + 2 links (which is asymmetric and small).
+
+```html
+<header class="nav-mast">
+  <p class="mast-line muted">No 22 · Spring 2026 · Studio</p>
+  <h1 class="mast-name">STUDIO</h1>
+  <nav class="mast-nav" aria-label="Primary">
+    <ul><li><a>Catalog</a></li><li><a>Voice</a></li><li><a>Letters</a></li></ul>
+  </nav>
+  <hr class="mast-rule double" aria-hidden="true">
+</header>
+```
+```css
+.nav-mast { display: grid; gap: var(--space-2xs); padding: var(--space-md) var(--page-gutter) 0; text-align: center; }
+.mast-name { font-family: var(--font-display); font-size: clamp(2.25rem, 5vw, 3.75rem); letter-spacing: -0.01em; line-height: 0.95; margin: 0; }
+.mast-line { font-variant: small-caps; letter-spacing: 0.08em; font-size: var(--text-xs); }
+.mast-nav ul { display: inline-flex; gap: var(--space-md); list-style: none; padding: 0; margin: var(--space-2xs) 0 0; }
+.mast-rule.double { border: 0; border-top: var(--rule-hair) solid var(--color-rule); border-bottom: var(--rule-hair) solid var(--color-rule); height: 4px; margin: var(--space-sm) 0 0; }
+```
+
+*Anti-pattern:* using N6 on a SaaS dashboard or a developer-tool product page. The masthead vocabulary belongs to long-form / editorial sites; on a B2B product, it reads as costume.
+
+### N7 · Brutal slab
+A heavy, full-width nav with a 2 px solid border-bottom, all-caps wordmark and tracked uppercase link row, dense rhythm, no shadow, no rounded corners. Reads as Pentagram project pages, Liquid Death, brutalist-leaning agencies.
+*Use when:* the genre is playful (Brutal, Manifesto, Sport) or the brand voice is heavy / declarative.
+*Don't confuse with:* N1 Wordmark + 2 links (which is small and quiet).
+
+```html
+<header class="nav-slab">
+  <a class="slab-mark">STUDIO</a>
+  <nav class="slab-nav" aria-label="Primary">
+    <ul><li><a>CATALOG</a></li><li><a>VOICE</a></li><li><a>WORK</a></li></ul>
+  </nav>
+  <a class="cta-fill cta-fill--slab">GET</a>
+</header>
+```
+```css
+.nav-slab { display: flex; align-items: center; gap: var(--space-md); padding: var(--space-sm) var(--page-gutter); border-bottom: 2px solid var(--color-ink); background: var(--color-paper); }
+.slab-mark { font-family: var(--font-display); font-weight: 800; letter-spacing: 0.04em; }
+.slab-nav ul { display: flex; gap: var(--space-md); list-style: none; padding: 0; margin: 0 0 0 auto; }
+.slab-nav a { text-transform: uppercase; letter-spacing: 0.08em; font-size: var(--text-sm); font-weight: 600; }
+```
+
+*Anti-pattern:* combining N7 with rounded corners, soft shadows, or backdrop-blur — those vocabularies fight. If you reach for blur, drop to N5; if you reach for round, drop to N1.
+
+### N8 · Terminal command
+A nav formatted as a CLI prompt: `> studio --catalog --voice --get▮`. The "links" are command flags. The blinking cursor (`▮`) is allowed *only here* (it has purpose — signals "you'd type next"); never standalone elsewhere on the page. Reads as Vercel CLI docs landing, Charm, Mitchell Hashimoto's site.
+*Use when:* the page is a CLI tool, dev-tool docs, or carries the Terminal theme.
+*Don't confuse with:* N4 ⌘K-only (which is a palette, not a visible bar).
+
+```html
+<header class="nav-term">
+  <pre class="nav-term__line"><span class="prompt">&gt;</span> studio <a href="#catalog">--catalog</a> <a href="#voice">--voice</a> <a href="#get">--get</a><span class="caret" aria-hidden="true">▮</span></pre>
+</header>
+```
+```css
+.nav-term { padding: var(--space-sm) var(--page-gutter); border-bottom: var(--rule-hair) solid var(--color-rule); }
+.nav-term__line { font-family: var(--font-outlier, ui-monospace, "JetBrains Mono", monospace); font-size: var(--text-sm); margin: 0; }
+.nav-term__line .prompt { color: var(--color-accent); padding-right: 0.4ch; }
+.nav-term__line a { color: var(--color-ink); text-decoration: underline; text-underline-offset: 2px; }
+.caret { display: inline-block; width: 1ch; animation: blink 1.05s steps(2) infinite; color: var(--color-accent); }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .caret { animation: none; opacity: 1; } }
+```
+
+*Anti-pattern:* using `>` prompt vocabulary on a non-developer site (a wedding photographer's portfolio with a `> view --gallery` nav reads as set decoration). N8 belongs to genuine terminal / CLI brands only.
+
+### N9 · Edge-aligned minimal
+Wordmark hard-left, single CTA hard-right, vast empty space between, no link row at all. The *absence* is the design — Apple product pages, Carl Hauser, luxury sites.
+*Use when:* the page is luxury / quiet / Atelier / Salon and the brand earns the silence.
+*Don't confuse with:* N1 Wordmark + 2 links (which fills the middle).
+
+```html
+<header class="nav-edge">
+  <a class="wordmark">Studio</a>
+  <a class="cta-outline">Get →</a>
+</header>
+```
+```css
+.nav-edge { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) var(--page-gutter); }
+.nav-edge .wordmark { font-family: var(--font-display); font-size: var(--text-md); }
+```
+
+*Anti-pattern:* adding 4 inline links between the wordmark and CTA "to fill the space". The space *is* the design; if you fill it, you've made N1 with extra steps.
+
+---
+
+## Routing — which nav fits which genre / theme
+
+| Genre / cluster | Default nav | Acceptable also |
+| --- | --- | --- |
+| editorial (Newsprint · Salon · Garden · Linen · Atelier) | **N6 Masthead** | N1, N9 |
+| modern-minimal (Specimen · Pastel · Quiet · Coral · Violet · Plume) | **N5 Floating pill** | N1, N9 |
+| atmospheric (Bloom · Aurora · Halo · Midnight) | **N5 Floating pill** (blur backdrop sells the mood) | N9, N4 |
+| playful (Brutal · Manifesto · Sport · Riso · Studio) | **N7 Brutal slab** | N1, N3 |
+| terminal / CLI (Terminal) | **N8 Terminal command** | N4 ⌘K-only |
+| docs / reference (Almanac) | **N3 Side-rail** | N1, N4 |
+
+**Diversification.** Across consecutive Hallmark runs in the same project session, no two outputs should share the same nav archetype — even when they share a genre. If the previous run used N5 on a modern-minimal page, the next modern-minimal page picks N1 or N9 from the routing table's "also" column.
+
+**Default away from N1.** The most-recognised AI fingerprint is N1 (wordmark + inline link row + button-right) used reflexively. Reach for N5–N9 first; reach for N1 only when the page genuinely has only 2 destinations *and* the genre's routing table allows it.
+
 ---
 
 ## Picking from this file
@@ -693,10 +947,19 @@ Below 60 rem the archetype must still feel like itself — same hierarchy, same 
 | **Ft2 Inline single line** | links wrap to multiple lines; separator becomes a soft return | becomes a vertical list |
 | **Ft3 Index columns** | grid 4-col → 2-col | grid 2-col → 1-col; column heads remain |
 | **Ft4 Dense colophon** | unchanged (mono/wraps naturally); reduce padding | font-size step down |
+| **Ft5 Statement** | sentence stays full width; meta row stacks | sentence size step down (clamp floor lifts); meta wraps |
+| **Ft6 Letter close** | unchanged single column; postscript wraps | signoff size step down; postscript italicises if not already |
+| **Ft7 Newsletter-first** | input + button stack vertically; full-width | label moves above input; button is full-width below |
+| **Ft8 Marquee scroll** | unchanged (already designed for narrow); slow speed by ~25 % | speed slows further; track height step down |
 | **N1 Wordmark + 2 links** | unchanged | links wrap to second line if long; wordmark stays |
 | **N2 Floating chip** | chip remains floating; reduce padding | chip widens to support 44 px hit target; never below 280 px |
 | **N3 Side-rail** | rail unsticks and becomes a hamburger trigger above | hamburger becomes the only nav |
 | **N4 ⌘K-only** | hamburger appears for users who don't know ⌘K | unchanged (⌘K equivalent is on-screen tap) |
+| **N5 Floating pill** | pill drops link list, keeps wordmark + CTA; stays detached | becomes a top-anchored corner chip — wordmark left, hamburger right |
+| **N6 Newspaper masthead** | issue line stacks above wordmark; nav links wrap to a second row | wordmark size step down; nav row collapses behind a "menu" disclosure |
+| **N7 Brutal slab** | links wrap to second line; CTA stays right-aligned | links collapse to hamburger; wordmark + hamburger only |
+| **N8 Terminal command** | flags wrap to a second `>` line if needed; cursor stays at the end | becomes a single hamburger labelled `> menu`; cursor visible at line end |
+| **N9 Edge-aligned minimal** | unchanged (already designed for breathing room) | wordmark + CTA stay edge-aligned; CTA pads to 44 px hit target |
 
 **Cross-cutting rules:**
 

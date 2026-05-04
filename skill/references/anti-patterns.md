@@ -72,6 +72,22 @@ Producing the Specimen macrostructure (numbered left-margin labels like `01 — 
 
 **Fix.** The Specimen macrostructure is one of twenty-one in [`macrostructures.md`](macrostructures.md), not a default. If the brief is vague, pick from the first ten in that file (Bento Grid, Long Document, Marquee Hero, Stat-Led, Workbench, Conversational FAQ, Manifesto, Photographic, Quote-Led, then Specimen). Reach for Specimen only when the brief explicitly says "editorial", "specimen sheet", "type foundry", or names the Specimen theme.
 
+### The AI nav
+
+Wordmark hard-left, 4–5 inline text links (`Features · Pricing · Docs · Blog · About`) centred or right-grouped, a CTA button hard-right, full viewport width, sticky on scroll, white background, 1 px hairline border-bottom. This is the most-recognised AI nav fingerprint — every LLM emits it because every SaaS site that fed the training data shipped it.
+
+**Why it fails.** The shape is genre-blind: it lands the same on a wedding photographer's portfolio, a bakery, a B2B SaaS, and a manifesto. When the nav can't tell you what kind of site you're on, the page is templated.
+
+**Fix.** Pick from the routing table in [`component-cookbook.md`](component-cookbook.md) § Navigation. The genre routes you to one of N5–N9: Floating pill (modern-minimal / atmospheric), Newspaper masthead (editorial), Brutal slab (playful), Terminal command (CLI), Edge-aligned minimal (luxury / quiet). Reach for N1 *only* when the page genuinely has 2 destinations and the routing table allows it. State the rationale in a one-line comment.
+
+### The AI footer
+
+4 columns of links (Product · Company · Resources · Legal), social-icon row beneath, copyright line at the very bottom, faint 1 px top-border, neutral grey background. Standard SaaS footer, identical across thousands of pages.
+
+**Why it fails.** Same as the AI nav — the shape is genre-blind. A bakery doesn't have a "Resources" column. An editorial page doesn't have a four-link "Legal". The footer should *close the page*, not catalogue its absent sitemap.
+
+**Fix.** Pick from the routing table in [`component-cookbook.md`](component-cookbook.md) § Footers. Default to Ft1 Mast-headed, Ft2 Inline single line, Ft4 Dense colophon, Ft5 Statement, Ft6 Letter close, Ft7 Newsletter-first, or Ft8 Marquee scroll. Use Ft3 Index columns *only* on a genuine hub or docs root with a real sitemap — and even then, never with the social-icon row + tiny copyright tail.
+
 ### Aurora-blob background
 
 Flowing organic mesh blobs in purple-to-pink-to-cyan, layered behind hero text. Looks "premium" until you've seen it on every Dribbble shot since 2022.

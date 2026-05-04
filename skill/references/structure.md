@@ -75,7 +75,7 @@ What happens on page-load and on scroll?
 - **Horizontal sweep.** Element slides in from one edge; clip-path or transform. Directional momentum.
 - **Type-unmask.** clip-path animates open over text. Graceful when the type is the hero.
 - **Number-tick.** Counter from 0 to final value; for stats, prices, dates. Almanac, dashboards.
-- **Typewriter.** Character-by-character; honest about the medium. Terminal only.
+- **Typewriter.** Character-by-character; honest about the medium. Terminal only. **Decorative-graphics constraint:** Terminal output must NOT include standalone scanlines, detached blinking cursors, or random ASCII art. The terminal cursor (`▮`) is allowed only when it sits *inside* a typed command (install code block, N8 Terminal command nav) and signals an honest "you'd type next" affordance. A floating cursor in a hero corner is set decoration; remove it. See [`microinteractions.md`](microinteractions.md) Caret blink row.
 - **None.** Everything is just there at load. Some sites should not move. Pentagram, brutalist sites.
 
 ## Picking a fingerprint
@@ -91,22 +91,32 @@ Two rules govern choices:
 
 Each Hallmark theme has a default structural fingerprint. Use them as starting points only when the brief specifies a theme. **For most builds, pick a macrostructure from [`macrostructures.md`](macrostructures.md) instead** — themes describe *visual surface*, macrostructures describe *page shape*; the latter drives variety more.
 
-The table below is alphabetical by theme to neutralise any "first row = default" attractor. No theme is the default.
+The table below is alphabetical by theme to neutralise any "first row = default" attractor. No theme is the default. The **Nav** and **Footer** columns name the default archetype from [`component-cookbook.md`](component-cookbook.md); the routing tables in that file list the acceptable alternates.
 
-| Theme | Heading | Body | Divider | Button | Image | Reveal |
-| --- | --- | --- | --- | --- | --- | --- |
-| Almanac | Sticky | Three-column equal | Hairline | Outlined | Inline | Number-tick |
-| Atelier | Centered | Single column | Negative space | Typographic-only | Tightly cropped | Type-unmask |
-| Brutal | Overlapping image | Full-bleed reset | Bleed-colour | Oversized solid | Full-bleed | Horizontal sweep |
-| Garden | Hanging | Marginalia | Negative space | Unstyled link | Margin-aligned | None |
-| Linen | Hanging | Two-column asymmetric | Negative space | Unstyled link | Margin-aligned | Fade-up |
-| Manifesto | Overlapping image | Full-bleed reset | Bleed-colour | Oversized solid | Full-bleed | Horizontal sweep |
-| Midnight | Numbered display | Single column | Hairline | Typographic-only | None | Typewriter |
-| Newsprint | Bottom-aligned | Multi-column justified | Double rule | Outlined | Inline | None |
-| Salon | Centered | Single column narrow | Ornament (fleuron) | Outlined | Tightly cropped | None |
-| Specimen | Left-margin | Asymmetric spans | Hairline | Outlined | None | Fade-up |
-| Sport | Numbered display | Asymmetric spans | Bleed-colour | Oversized solid | Full-bleed | Horizontal sweep |
-| Terminal | Inline (with `>` prompt) | Single column | Negative space | Typographic-only `[ go ]` | None | Typewriter |
+| Theme | Heading | Body | Divider | Button | Image | Reveal | Nav | Footer |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Almanac | Sticky | Three-column equal | Hairline | Outlined | Inline | Number-tick | N3 Side-rail | Ft3 Index columns |
+| Atelier | Centered | Single column | Negative space | Typographic-only | Tightly cropped | Type-unmask | N9 Edge-min | Ft6 Letter close |
+| Aurora | Hanging | Single column | Negative space | Typographic-only | None | Fade-up | N5 Floating pill | Ft5 Statement |
+| Bloom | Centered | Single column | Negative space | Typographic-only | None | Fade-up | N5 Floating pill | Ft5 Statement |
+| Brutal | Overlapping image | Full-bleed reset | Bleed-colour | Oversized solid | Full-bleed | Horizontal sweep | N7 Brutal slab | Ft8 Marquee scroll |
+| Coral | Centered | Single column | Negative space | Outlined | Margin-aligned | Fade-up | N5 Floating pill | Ft1 Mast-headed |
+| Garden | Hanging | Marginalia | Negative space | Unstyled link | Margin-aligned | None | N9 Edge-min | Ft6 Letter close |
+| Halo | Centered | Single column | Negative space | Outlined | None | Fade-up | N5 Floating pill | Ft5 Statement |
+| Linen | Hanging | Two-column asymmetric | Negative space | Unstyled link | Margin-aligned | Fade-up | N6 Masthead | Ft1 Mast-headed |
+| Manifesto | Overlapping image | Full-bleed reset | Bleed-colour | Oversized solid | Full-bleed | Horizontal sweep | N7 Brutal slab | Ft5 Statement |
+| Midnight | Numbered display | Single column | Hairline | Typographic-only | None | Typewriter | N5 Floating pill | Ft2 Inline single line |
+| Newsprint | Bottom-aligned | Multi-column justified | Double rule | Outlined | Inline | None | N6 Masthead | Ft4 Dense colophon |
+| Pastel | Centered | Single column | Negative space | Outlined | None | Fade-up | N5 Floating pill | Ft2 Inline single line |
+| Plume | Hanging | Single column | Bleed-colour band | Outlined | Margin-aligned | Fade-up | N9 Edge-min | Ft1 Mast-headed |
+| Quiet | Centered | Single column narrow | Negative space | Outlined pill | None | None | N9 Edge-min | Ft2 Inline single line |
+| Riso | Centered | Single column | Negative space | Outlined | Inline | None | N7 Brutal slab | Ft8 Marquee scroll |
+| Salon | Centered | Single column narrow | Ornament (fleuron) | Outlined | Tightly cropped | None | N6 Masthead | Ft1 Mast-headed |
+| Specimen | Left-margin | Asymmetric spans | Hairline | Outlined | None | Fade-up | N5 Floating pill | Ft2 Inline single line |
+| Sport | Numbered display | Asymmetric spans | Bleed-colour | Oversized solid | Full-bleed | Horizontal sweep | N7 Brutal slab | Ft8 Marquee scroll |
+| Studio | Centered | Asymmetric spans | Negative space | Typographic-only | Tightly cropped | Fade-up | N7 Brutal slab | Ft3 Index columns |
+| Terminal | Inline (with `>` prompt) | Single column | Negative space | Typographic-only `[ go ]` | None | Typewriter | N8 Terminal command | Ft4 Dense colophon |
+| Violet | Hanging | Single column | Negative space | Outlined | None | Fade-up | N5 Floating pill | Ft2 Inline single line |
 
 ## Anti-patterns of structural sameness
 

@@ -46,10 +46,20 @@ Brief mentions any of: *SaaS, enterprise, API, platform, developer tool, infra, 
 - *"Thirty thousand teams build with X."*
 - *"One API. Every channel."*
 
+## Nav and footer voice
+
+- **Default nav:** N5 Floating pill — content-sized, detached from edges, blur backdrop, soft shadow. Vercel / Linear / Framer / Raycast vocabulary.
+- **Acceptable also:** N1 Wordmark + 2 links (when destinations are genuinely minimal); N9 Edge-aligned minimal (when the brand earns the silence).
+- **Default footer:** Ft2 Inline single line — wordmark + tagline + tiny credit, hairline rule above. Restrained.
+- **Acceptable also:** Ft1 Mast-headed; Ft5 Statement (when the page wants a closing line).
+- **Banned for modern-minimal:** N6 Newspaper masthead (editorial vocabulary); N7 Brutal slab (fights the restraint); Ft8 Marquee scroll (kinetic, wrong voice); Ft3 Index columns at full saturation (the AI-footer fingerprint — gate 52).
+
+See [`component-cookbook.md`](../component-cookbook.md) § Navigation and § Footers for the full archetypes + code.
+
 ## Stamp signature
 
 ```css
-/* Hallmark · genre: modern-minimal · macrostructure: <name> · theme: <name> · enrichment: <tier> */
+/* Hallmark · genre: modern-minimal · macrostructure: <name> · theme: <name> · enrichment: <tier> · nav: <N#> · footer: <Ft#> */
 ```
 
 ## Reference register (for the LLM, not credited to anyone)
