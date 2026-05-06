@@ -198,22 +198,26 @@
   overflow-x: auto;
   overflow-y: visible;
   scroll-snap-type: x mandatory;
-  /* Full-bleed: escape both the page max-width AND the page gutter so
-     the rail spans the full viewport regardless of how wide the
-     screen is. Cards extend right up to the viewport's edge. */
+  /* Full-bleed: rail spans the full viewport. But the FIRST card
+     starts aligned with the page content (same left edge as the
+     section header), not flush against the viewport. As the user
+     scrolls horizontally, cards travel through the full bleed
+     including the viewport edges — only the initial position
+     respects the page's content gutter. */
   width: 100vw;
   margin-inline: calc(50% - 50vw);
-  padding-inline: var(--page-gutter);
+  --rail-edge: max(var(--page-gutter), calc((100vw - var(--page-max)) / 2 + var(--page-gutter)));
+  padding-inline: var(--rail-edge);
   padding-block: var(--space-md) var(--space-lg);
-  scroll-padding-inline: var(--page-gutter);
+  scroll-padding-inline: var(--rail-edge);
   scrollbar-color: var(--color-rule-2) transparent;
 }
 
 /* Reserve trailing whitespace inside the rail so the last card snaps
-   clean to the gutter and isn't cut off by the bleed margin. */
+   clean to the same content edge as the first. */
 .examples-rail::after {
   content: "";
-  flex: 0 0 var(--page-gutter);
+  flex: 0 0 var(--rail-edge);
 }
 
 .examples-rail::-webkit-scrollbar { height: 6px; }
