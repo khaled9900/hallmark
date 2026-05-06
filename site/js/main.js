@@ -56,29 +56,29 @@ const STORAGE_KEY = "hallmark-theme";
    variety: switching themes literally rebuilds the page, not just
    recolours it. See skill/references/component-cookbook.md. */
 const ARCHETYPES = {
-  specimen: { hero: "marquee", footer: "masthead" },
-  newsprint: { hero: "split", footer: "index" },
-  atelier: { hero: "quote-led", footer: "inline" },
-  garden: { hero: "letter", footer: "masthead" },
-  salon: { hero: "quote-led", footer: "masthead" },
-  linen: { hero: "letter", footer: "inline" },
-  almanac: { hero: "stat-led", footer: "index" },
-  midnight: { hero: "stat-led", footer: "index" },
-  terminal: { hero: "marquee", footer: "dense" },
-  brutal: { hero: "photographic", footer: "inline" },
-  manifesto: { hero: "marquee", footer: "masthead" },
-  sport: { hero: "stat-led", footer: "inline" },
-  studio: { hero: "photographic", footer: "index" },
-  pastel: { hero: "clipped", footer: "masthead" },
-  riso: { hero: "quote-led", footer: "dense" },
-  quiet: { hero: "split", footer: "masthead" },
-  bloom: { hero: "marquee", footer: "masthead" },
-  coral: { hero: "split", footer: "masthead" },
-  violet: { hero: "split", footer: "masthead" },
-  aurora: { hero: "marquee", footer: "masthead" },
-  halo: { hero: "clipped", footer: "index" },
-  plume: { hero: "clipped", footer: "masthead" },
-  editorial: { hero: "split", footer: "masthead" },
+  specimen: { hero: "marquee", footer: "colophon" },
+  newsprint: { hero: "split", footer: "colophon" },
+  atelier: { hero: "quote-led", footer: "colophon" },
+  garden: { hero: "letter", footer: "colophon" },
+  salon: { hero: "quote-led", footer: "colophon" },
+  linen: { hero: "letter", footer: "colophon" },
+  almanac: { hero: "stat-led", footer: "colophon" },
+  midnight: { hero: "stat-led", footer: "colophon" },
+  terminal: { hero: "marquee", footer: "colophon" },
+  brutal: { hero: "photographic", footer: "colophon" },
+  manifesto: { hero: "marquee", footer: "colophon" },
+  sport: { hero: "stat-led", footer: "colophon" },
+  studio: { hero: "photographic", footer: "colophon" },
+  pastel: { hero: "clipped", footer: "colophon" },
+  riso: { hero: "quote-led", footer: "colophon" },
+  quiet: { hero: "split", footer: "colophon" },
+  bloom: { hero: "marquee", footer: "colophon" },
+  coral: { hero: "split", footer: "colophon" },
+  violet: { hero: "split", footer: "colophon" },
+  aurora: { hero: "marquee", footer: "colophon" },
+  halo: { hero: "clipped", footer: "colophon" },
+  plume: { hero: "clipped", footer: "colophon" },
+  editorial: { hero: "split", footer: "colophon" },
 };
 
 /* — Theme → genre map ——————————————————————————————————
@@ -711,6 +711,9 @@ attachCopyButtons();
 /* Cached banner subnodes — populated once at startup. */
 const themeLabelEl = document.querySelector(".banner__theme");
 const themeGenreEl = document.querySelector("[data-theme-genre]");
+const ordinalEl   = document.querySelector("[data-theme-ordinal]");
+const themeKeys   = Object.keys(THEMES);
+const totalThemes = themeKeys.length;
 
 function setPressed(theme) {
   dots.forEach((btn) => {
@@ -719,9 +722,16 @@ function setPressed(theme) {
   });
   const themeName = THEMES[theme] || "Specimen";
   const genre = THEME_GENRES[theme] || "editorial";
+  const idx = themeKeys.indexOf(theme);
+  const ordinal = idx >= 0 ? String(idx + 1).padStart(2, "0") : "01";
 
   if (themeLabelEl) themeLabelEl.textContent = themeName;
   if (themeGenreEl) themeGenreEl.textContent = genre;
+  if (ordinalEl)    ordinalEl.textContent = `${ordinal} / ${totalThemes}`;
+
+  // Colophon footer — update the "Currently rendered in <theme>" line.
+  const footThemeEl = document.querySelector("[data-theme-current-foot]");
+  if (footThemeEl) footThemeEl.textContent = themeName;
 
   // Fallback for older callers — keep the public theme-current span up to date.
   if (currentLabel && !themeLabelEl) currentLabel.textContent = themeName;
@@ -761,8 +771,51 @@ try { localStorage.setItem(STORAGE_KEY, initial); } catch (e) { }
 dots.forEach((btn) => {
   btn.addEventListener("click", () => {
     applyTheme(btn.dataset.themeBtn);
+    closeThemeDropdown();
   });
 });
+
+/* — Theme dropdown — open/close + outside-dismiss ————————————
+   The indicator button toggles the panel. Outside clicks, Escape,
+   and theme selection all close it. The dropdown is hidden via the
+   `hidden` attribute (CSS handles `[hidden] { display: none }`). */
+const themeTrigger  = document.querySelector("[data-theme-trigger]");
+const themeDropdown = document.getElementById("theme-dropdown");
+const themeWrap     = document.querySelector("[data-theme-wrap]");
+
+function openThemeDropdown() {
+  if (!themeDropdown || !themeTrigger) return;
+  themeDropdown.hidden = false;
+  themeTrigger.setAttribute("aria-expanded", "true");
+}
+
+function closeThemeDropdown() {
+  if (!themeDropdown || !themeTrigger) return;
+  themeDropdown.hidden = true;
+  themeTrigger.setAttribute("aria-expanded", "false");
+}
+
+if (themeTrigger && themeDropdown) {
+  themeTrigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (themeDropdown.hidden) openThemeDropdown(); else closeThemeDropdown();
+  });
+
+  // Click outside the wrap closes the dropdown.
+  document.addEventListener("click", (e) => {
+    if (themeDropdown.hidden) return;
+    if (themeWrap && themeWrap.contains(e.target)) return;
+    closeThemeDropdown();
+  });
+
+  // Escape closes too.
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !themeDropdown.hidden) {
+      closeThemeDropdown();
+      themeTrigger.focus();
+    }
+  });
+}
 
 /* — Shuffle button + R shortcut ——————————————————————————— */
 const shuffleBtn = document.querySelector(".banner__shuffle, .banner__random");

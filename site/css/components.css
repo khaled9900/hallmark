@@ -199,49 +199,135 @@
   .t-tooltip { animation: none; }
 }
 
-/* The active theme name — sits to the LEFT of the theme picker so the
-   page restructure registers as a deliberate event, not a passive repaint.
-   Smaller text + closer to the picker on desktop; hidden on narrow viewports. */
-.banner__center {
+/* — Theme indicator + dropdown ————————————————————————————
+   Replaces the inline 23-dot strip. The indicator reads "01 / 23 —
+   Specimen" in the active theme's display face; clicking it opens
+   a compact 6×4 grid of color swatches (no theme names, deliberately
+   minimal). Dropdown is position: absolute below the indicator. */
+.banner__theme-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.banner__theme-indicator {
+  appearance: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  height: 28px;
+  padding: 0 0.65rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill, 999px);
+  color: var(--color-ink);
+  cursor: pointer;
   font-family: var(--font-display);
   font-weight: var(--display-weight, 500);
   font-style: var(--display-style, normal);
   font-size: 0.95rem;
   letter-spacing: -0.005em;
-  text-transform: none;
-  color: var(--color-ink);
   font-optical-sizing: auto;
-  transition: opacity var(--dur-short) var(--ease-out);
   white-space: nowrap;
-  margin-inline-end: var(--space-xs);
+  transition: border-color var(--dur-micro) var(--ease-out),
+              background var(--dur-micro) var(--ease-out);
 }
 
-[data-theme="manifesto"] .banner__center,
-[data-theme="brutal"] .banner__center,
-[data-theme="sport"] .banner__center {
+@media (hover: hover) and (pointer: fine) {
+  .banner__theme-indicator:hover {
+    border-color: var(--color-rule-2);
+  }
+}
+
+.banner__theme-indicator:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.banner__theme-indicator[aria-expanded="true"] {
+  border-color: var(--color-rule-2);
+  background: var(--color-paper-2);
+}
+
+/* "01 / 23" set in mono for tabular alignment + ledger feel. */
+.banner__ordinal {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  font-feature-settings: "tnum" 1;
+  text-transform: uppercase;
+}
+
+.banner__indicator-sep {
+  color: var(--color-rule-2);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.banner__caret {
+  flex-shrink: 0;
+  align-self: center;
+  color: var(--color-muted);
+  margin-inline-start: 0.1rem;
+  transition: transform var(--dur-micro) var(--ease-out);
+}
+
+.banner__theme-indicator[aria-expanded="true"] .banner__caret {
+  transform: rotate(180deg);
+}
+
+/* Theme-aware overrides for the theme-name span (was on .banner__center). */
+[data-theme="manifesto"] .banner__theme-indicator,
+[data-theme="brutal"] .banner__theme-indicator,
+[data-theme="sport"] .banner__theme-indicator {
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
 
-[data-theme="terminal"] .banner__center::before {
+[data-theme="terminal"] .banner__theme::before {
   content: "$ ";
   color: var(--color-accent);
 }
 
-[data-theme="terminal"] .banner__center {
+[data-theme="terminal"] .banner__theme-indicator {
   font-family: var(--font-mono);
 }
 
-.banner__picker {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+/* Dropdown panel — appears under the indicator. Hidden by default. */
+.theme-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: var(--z-sticky);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  padding: 10px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule-2);
+  border-radius: 4px;
+  box-shadow: 0 12px 36px -10px oklch(20% 0.02 60 / 0.22);
+  animation: theme-dropdown-in 140ms var(--ease-out);
+  transform-origin: top right;
 }
 
-.banner__dot {
+.theme-dropdown[hidden] { display: none; }
+
+@keyframes theme-dropdown-in {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-dropdown { animation: none; }
+}
+
+/* Dot inside the dropdown — same styling as the old .banner__dot. */
+.theme-dropdown__dot {
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
   padding: 0;
   background: var(--dot, var(--color-paper));
   border: 1px solid var(--color-rule-2);
@@ -253,37 +339,30 @@
               box-shadow var(--dur-micro) var(--ease-out);
 }
 
-.banner__dot::after {
+.theme-dropdown__dot::after {
   content: "";
   position: absolute;
-  inset: 3px;
+  inset: 4px;
   background: var(--dot-edge, transparent);
   border-radius: 2px;
   opacity: 0.85;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .banner__dot:hover {
+  .theme-dropdown__dot:hover {
     transform: translateY(-1px);
     border-color: var(--color-ink);
   }
 }
 
-.banner__dot:focus-visible {
+.theme-dropdown__dot:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
-.banner__dot[aria-pressed="true"] {
+.theme-dropdown__dot[aria-pressed="true"] {
   border-color: var(--color-ink);
   box-shadow: 0 0 0 2px var(--color-paper), 0 0 0 3px var(--color-ink);
-}
-
-.banner__sep {
-  width: 1px;
-  height: 14px;
-  background: var(--color-rule);
-  margin-inline: 0.25rem;
 }
 
 /* Combined shuffle button: icon + T kbd hint inside a single pill.
@@ -356,26 +435,21 @@
 
 @media (max-width: 60rem) {
   .banner { gap: var(--space-md); }
-  .banner__center { font-size: 0.825rem; }
+  .banner__theme-indicator { font-size: 0.85rem; padding: 0 0.5rem; }
+  .banner__ordinal { font-size: 0.625rem; }
 }
 
-@media (max-width: 50rem) {
-  .banner__picker { gap: 0.28rem; }
-  .banner__dot { width: 14px; height: 14px; }
-  .banner__sep { display: none; }
-}
-
-/* Below 44rem: hide the dot grid (would overflow); keep mark + theme name + shuffle */
 @media (max-width: 44rem) {
   .banner__ver { display: none; }
-  .banner__picker { display: none; }
   .banner__shuffle-key { display: none; }
   .banner__shuffle { padding: 0 0.5rem; height: 24px; }
+  /* Hide ordinal on small viewports — keep just the theme name + caret. */
+  .banner__ordinal,
+  .banner__indicator-sep { display: none; }
 }
 
-/* Below 26rem (very small phones): hide center label too — pure click-to-shuffle */
 @media (max-width: 26rem) {
-  .banner__center { display: none; }
+  .banner__theme-indicator .banner__theme { display: none; }
 }
 
 /* — Section label (01 / FOUNDATIONS) —————————————————— */
@@ -2825,6 +2899,138 @@
   white-space: pre-wrap;
   margin: 0;
   padding-block: var(--space-md);
+}
+
+/* ───────── Ft5 — Editorial colophon (the unified footer) ────────
+   The publisher's signature page. Same shape across every theme;
+   theme variation comes from typography rendering, not layout.
+   Typeset prose paragraphs, no link farm, generous line-height. */
+.foot--colophon {
+  display: grid;
+  gap: var(--space-md);
+  padding-block: var(--space-2xl) var(--space-xl);
+  border-block-start: var(--rule-hair) solid var(--color-rule);
+  max-width: 64ch;
+  margin: 0;
+}
+
+.foot__sig {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  margin: 0;
+  margin-block-end: var(--space-sm);
+  font-family: var(--font-display);
+  font-weight: var(--display-weight, 500);
+  font-style: var(--display-style, normal);
+  font-size: var(--text-2xl);
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-ink);
+  font-optical-sizing: auto;
+}
+
+.foot--colophon .foot__wordmark {
+  /* Override the legacy 3xl rule for the masthead variant — the
+     colophon sig is intentionally smaller (it's a signature, not
+     a page title). */
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+.foot__sig-ver {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+[data-theme="manifesto"] .foot--colophon .foot__wordmark,
+[data-theme="brutal"] .foot--colophon .foot__wordmark,
+[data-theme="sport"] .foot--colophon .foot__wordmark { text-transform: uppercase; }
+
+.foot__set,
+.foot__catalog,
+.foot__credit {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9375rem;
+  line-height: var(--lh-relaxed);
+  color: var(--color-ink-2);
+  margin: 0;
+  max-width: 60ch;
+}
+
+.foot__set em {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.foot__set strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.foot__credit .foot__powered-mark {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+[data-theme="brutal"] .foot__set,
+[data-theme="brutal"] .foot__catalog,
+[data-theme="brutal"] .foot__credit,
+[data-theme="manifesto"] .foot__set,
+[data-theme="manifesto"] .foot__catalog,
+[data-theme="manifesto"] .foot__credit,
+[data-theme="terminal"] .foot__set,
+[data-theme="terminal"] .foot__catalog,
+[data-theme="terminal"] .foot__credit,
+[data-theme="sport"] .foot__set,
+[data-theme="sport"] .foot__catalog,
+[data-theme="sport"] .foot__credit,
+[data-theme="almanac"] .foot__set,
+[data-theme="almanac"] .foot__catalog,
+[data-theme="almanac"] .foot__credit,
+[data-theme="quiet"] .foot__set,
+[data-theme="quiet"] .foot__catalog,
+[data-theme="quiet"] .foot__credit,
+[data-theme="bloom"] .foot__set,
+[data-theme="bloom"] .foot__catalog,
+[data-theme="bloom"] .foot__credit {
+  font-family: var(--font-body);
+  font-style: normal;
+}
+
+.foot--colophon .foot__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+  margin-block-start: var(--space-sm);
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+  /* Reset legacy .foot__links rules from the masthead variant. */
+  flex-wrap: nowrap;
+}
+
+.foot--colophon .foot__sep {
+  /* Inline dot separator instead of vertical bar. */
+  width: auto;
+  height: auto;
+  background: transparent;
+  color: var(--color-rule-2);
 }
 
 /* ───────────── SLOT REVEALS ─────────────
