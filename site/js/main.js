@@ -50,7 +50,7 @@ const ARCHETYPES = {
   almanac: { hero: "stat-led", footer: "colophon" },
   midnight: { hero: "stat-led", footer: "colophon" },
   terminal: { hero: "marquee", footer: "colophon" },
-  brutal: { hero: "photographic", footer: "colophon" },
+  brutal: { hero: "marquee", footer: "colophon" },
   manifesto: { hero: "marquee", footer: "colophon" },
   sport: { hero: "stat-led", footer: "colophon" },
   studio: { hero: "letter", footer: "colophon" },
