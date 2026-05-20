@@ -1,6 +1,6 @@
 # Roadmap
 
-What's next. Ordered loosely by impact, not committed timelines.
+What's next. 
 
 ---
 
@@ -14,6 +14,8 @@ What's next. Ordered loosely by impact, not committed timelines.
 
 ## Next
 
+**Brand-first flow.** From a short product description, Hallmark generates a complete brand — palette, type system, voice, custom imagery via Nanobanana — and locks it into a `design.md`. The user then runs Hallmark normally and the whole site builds against that generated brand, page after page. Closes the gap for users who have a product idea but no brand yet.
+
 **Theme-aware motion tokens.** Per-theme `--dur-micro` / `--dur-short` / `--dur-long`, scaled by the table already in [`microinteractions.md`](references/microinteractions.md). Atelier should feel slower than Brutal; today they share durations. One pass through the tokens file.
 
 **`hallmark variant`** — produce three structurally distinct versions of the same brief side-by-side; the user picks one or asks for a fourth. The biggest cause of "AI feel" is users accepting the first output because they didn't know it could be different.
@@ -22,11 +24,11 @@ What's next. Ordered loosely by impact, not committed timelines.
 
 **Tactile-rebellion reference.** Controlled imperfection — handmade textures, hand-drawn SVG paths, controlled-jitter typography (a 0.5° tilt on one mark is taste; on every word it's chaos). Where the field is going.
 
-**Data-viz canon.** Tufte-leaning charts: small multiples, restrained colour, banned types (3D donut, dual-axis line, rainbow categorical). Dashboards are half data viz; AI-generated charts are especially bad.
+**Charts reference for analytics pages.** AI-generated charts are an obvious tell — rainbow palettes, dense gridlines, 3D donuts, dual-axis line spaghetti. Add a `data-viz.md` that picks small multiples over single dense charts, restrains colour to one accent + neutrals, and bans the worst types outright. Half of every dashboard is chart-shaped, and Hallmark currently has nothing to say about it.
 
 **Multi-page coherence.** The structural-variety rule is correct for variety, wrong for brand consistency inside a multi-page product. Lock the brand axes (type, colour, divider language); vary the page-voice axes (heading placement, body composition, button voice). Different *pages* of the same site, not different *sites*.
 
-**`hallmark extract`** — read an existing codebase, identify tokens + structural fingerprint, emit a `design.md` to hand to other agents or back to Hallmark. Most users come with an existing codebase, not a greenfield brief.
+**`study` reads your own codebase too.** Today `study` accepts a screenshot or a URL of an external design. Add a third input mode: a path to your project. Hallmark walks the files, identifies tokens + the structural fingerprint actually in use, and emits the same `design.md`. Closes the loop for users who arrive with code, not a brief — same verb, same output, third input mode.
 
 ---
 
@@ -37,14 +39,3 @@ What's next. Ordered loosely by impact, not committed timelines.
 - **Emotion-first prompting** — *nostalgic · optimistic · sceptical* instead of *editorial · brutalist · austere*. Today's tone words don't reach.
 - **Sound + haptic policy** — when web sound is acceptable (gaming, accessibility-augmenting) without crossing into kitsch.
 - **Live preview as an MCP server** — watch the file, render in a sandbox, screenshot, feed the screenshot back for self-critique against the slop test. Closes the loop between generation and audit.
-
----
-
-## Won't do
-
-- **A fifth verb** before the existing four are battle-tested. Comprehensibility beats surface area.
-- **More themes than the catalog can hold.** If anything, cut underperforming ones.
-- **A UI library.** Hallmark is a taste skill, not a component kit. shadcn/ui and Geist exist; point users there.
-- **A Figma plugin.** The skill works in code; that's a feature.
-- **URL scraping on the default verb.** Brand-match by URL is somebody else's job. `study` accepts URLs read-only, with refusal heuristics.
-- **Image generation as a core feature.** Out of scope. "Use real photos" or "no image" is usually the right answer. (The Nanobanana hook above is a thin integration, not a generation pipeline.)
