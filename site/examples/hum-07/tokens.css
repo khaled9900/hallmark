@@ -1,9 +1,10 @@
-/* Hallmark · macrostructure: Marquee Hero · H1 hero knobs: today's-curio card, character=pulse-mark, pear-cta
- * theme: Hum (catalog) · paper: oklch(97% 0.012 95) · accent: pear oklch(86% 0.18 95) + cyan oklch(66% 0.18 235) + coral oklch(68% 0.24 18)
- * display: Plus Jakarta Sans 600 · body: Plus Jakarta Sans · labels: JetBrains Mono UPPERCASE
+/* Hallmark · Hum · Bubble (guided sourdough app) · Narrative Workflow · N10 floating-on-scroll morph · hum-07
+ * theme: Hum (catalog) · paper oklch(97% 0.012 95)
+ * lead accent: mint oklch(80% 0.16 150) — carries the primary CTA + most surfaces
+ *   + cyan (mix) · pear (prove + the character jar) · coral (the bake climax, the one high-energy moment)
+ * display/body: Plus Jakarta Sans · labels: JetBrains Mono UPPERCASE
  * axes: light / rounded-sans / multi-accent
- * nav: N5 floating pill (relaxed for playful) · footer: Ft5 statement
- * brief: "Curio — a 30-second daily curiosity app."
+ * footer: Ft5 statement · brief: "Bubble — guided sourdough, one stage at a time."
  * v1.0.0
  */
 
@@ -37,7 +38,7 @@
   --tint-pear:     oklch(86% 0.18 95 / 0.16);
   --tint-cyan:     oklch(66% 0.18 235 / 0.14);
   --tint-coral:    oklch(68% 0.24 18 / 0.12);
-  --tint-mint:     oklch(80% 0.16 150 / 0.16);
+  --tint-mint:     oklch(80% 0.16 150 / 0.18);
   --tint-lavender: oklch(74% 0.16 305 / 0.14);
 
   /* Type — rounded sans only */
@@ -93,9 +94,6 @@
                   0 1px 2px oklch(20% 0.012 250 / 0.06);
   --shadow-card-hover: 0 24px 56px -20px oklch(20% 0.012 250 / 0.18),
                        0 2px 6px oklch(20% 0.012 250 / 0.08);
-  --shadow-pear-base: 0 8px 0 -4px var(--color-accent-deep);
-  --shadow-pear-hover: 0 14px 0 -4px var(--color-accent-deep),
-                       0 4px 12px oklch(20% 0.012 250 / 0.10);
 
   --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft:    cubic-bezier(0.22, 0.61, 0.36, 1);

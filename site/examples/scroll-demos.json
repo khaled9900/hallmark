@@ -6,7 +6,7 @@
     { "slug": "cobalt-01",  "group": "theme",  "theme": "Cobalt",   "url": "examples/cobalt-01/",  "title": "Distil",                    "kind": "content-extraction API",        "durationSec": 16, "out": "_tests/_thumbs/cobalt-01-scroll.mp4" },
     { "slug": "carnival-01", "group": "theme",  "theme": "Carnival", "url": "examples/carnival-01/", "title": "Cold Snap",                 "kind": "record-label EP page",          "durationSec": 12, "out": "_tests/_thumbs/carnival-01-scroll.mp4" },
     { "slug": "lumen-01",   "group": "theme",   "theme": "Lumen",    "url": "examples/lumen-01/",   "title": "Cinder",                    "kind": "AI reasoning tool",             "durationSec": 13, "out": "_tests/_thumbs/lumen-01-scroll.mp4" },
-    { "slug": "hum-02",     "group": "theme",   "theme": "Hum",      "url": "examples/hum-02/",     "title": "Sprout",                    "kind": "daily-reading app",             "durationSec": 13, "out": "_tests/_thumbs/hum-02-scroll.mp4" },
+    { "slug": "hum-07",     "group": "theme",   "theme": "Hum",      "url": "examples/hum-07/",     "title": "Bubble",                    "kind": "guided sourdough app",          "durationSec": 13, "out": "_tests/_thumbs/hum-07-scroll.mp4" },
 
     { "slug": "custom-01",  "group": "custom",  "url": "examples/custom-01/", "title": "Setting the Night Edition", "kind": "letterpress poem broadside",      "durationSec": 14, "out": "_tests/_thumbs/custom-01-scroll.mp4" },
     { "slug": "custom-02",  "group": "custom",  "url": "examples/custom-02/", "title": "The Cascadia Nightjar",     "kind": "sleeper-train ticket",            "durationSec": 12, "out": "_tests/_thumbs/custom-02-scroll.mp4" },
