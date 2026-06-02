@@ -361,7 +361,7 @@ hero?.addEventListener('pointermove', (e) => {
 A huge edition number / year / chapter glyph set in display-italic in a hero corner. The numeral *means something* — issue 22, year 2026, chapter 03, version 0.8. Reads as editorial · newsprint · almanac.
 
 *Use when:* the page genuinely has an edition / issue / chapter / version semantic — magazines, journals, archived work, dated essays.
-*Avoid when:* the numeral has no semantic anchor. A random "42" in the corner reads as decoration, which is slop (see slop-test gate 55).
+*Avoid when:* the numeral has no semantic anchor. A random "42" in the corner reads as decoration, which is slop (see slop-test gate 45).
 
 ```html
 <header class="hero hero--num">
@@ -385,10 +385,10 @@ A huge edition number / year / chapter glyph set in display-italic in a hero cor
 
 Every hero — enriched or not, polished or not — obeys these rules.
 
-- **Footprint.** The hero takes 70–90 % of the first viewport's height — no more, no less. `min-height: 100vh / 100dvh` is the AI fingerprint (gate 7); a hero that's only 20 % of the viewport feels like a header. Aim for `min-height: clamp(60vh, 75dvh, 88dvh)` and let content settle inside.
-- **Fit the fold — content, not just the box.** The Footprint rule caps the hero's *height*; this caps its *content*. On a 13″ laptop (~800 px tall) the eyebrow + headline + lede + primary CTA must all be visible **without scrolling**. When they aren't, it's almost always wasted vertical space — an oversized display `clamp()` max, display line-height near 1.2, a 3-line lede, or `padding-block` bloat. Pull the clamp max down, set display line-height 1.0–1.1, hold the lede to ~2 lines, trim the padding. **Right-size, don't cramp** — a hero that already fits needs no shrinking, and this never means tiny type or no whitespace. Slop-test gate 70 enforces this.
-- **Asymmetric padding.** `padding-block-end` ≥ 1.3× `padding-block-start`. The hero sits *into* the page; symmetric padding floats. Slop-test gate 54 enforces this.
-- **Never centre everything.** Eyebrow + title + lede + CTA all stacked centred is the AI fingerprint. Pick at most *two* centred elements; break alignment for the others. Gate 53 enforces this. Centred-narrow heroes are admissible only when the genre is editorial / atelier *and* the eyebrow or CTA breaks alignment.
+- **Footprint.** The hero takes 70–90 % of the first viewport's height — no more, no less. `min-height: 100vh / 100dvh` is the AI fingerprint (gate 6); a hero that's only 20 % of the viewport feels like a header. Aim for `min-height: clamp(60vh, 75dvh, 88dvh)` and let content settle inside.
+- **Fit the fold — content, not just the box.** The Footprint rule caps the hero's *height*; this caps its *content*. On a 13″ laptop (~800 px tall) the eyebrow + headline + lede + primary CTA must all be visible **without scrolling**. When they aren't, it's almost always wasted vertical space — an oversized display `clamp()` max, display line-height near 1.2, a 3-line lede, or `padding-block` bloat. Pull the clamp max down, set display line-height 1.0–1.1, hold the lede to ~2 lines, trim the padding. **Right-size, don't cramp** — a hero that already fits needs no shrinking, and this never means tiny type or no whitespace. Slop-test gate 44 enforces this.
+- **Asymmetric padding.** `padding-block-end` ≥ 1.3× `padding-block-start`. The hero sits *into* the page; symmetric padding floats. Slop-test gate 44 enforces this.
+- **Never centre everything.** Eyebrow + title + lede + CTA all stacked centred is the AI fingerprint. Pick at most *two* centred elements; break alignment for the others. Gate 6 enforces this. Centred-narrow heroes are admissible only when the genre is editorial / atelier *and* the eyebrow or CTA breaks alignment.
 - **Entrance animation.** Pick one of {fade, sweep, none} per element — never both fade *and* sweep on the same element. Duration ≤ 220 ms. Disable on `prefers-reduced-motion: reduce`. Cross-reference the "One orchestrated reveal per page" rule below.
 - **Headline typography.** Prefer one display weight + tight tracking (-0.02em to -0.04em) over default 0; line-height 0.95–1.05 for display, never 1.2 (which inherits the body line-height and reads as un-set type). Avoid two display weights on the same headline (a `<strong>` in a different weight inside the title is AI's idea of "emphasis"; pick one weight, let the words carry).
 - **One polish pattern, max.** HP1–HP4 are mutually exclusive on a single hero. A vertical rail *and* a marquee-overflow *and* a cursor spotlight *and* a decorative numeral on one hero is a panic attack. Pick one.

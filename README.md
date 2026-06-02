@@ -10,7 +10,7 @@ Made by Together AI.
   <img src="site/OG-hallmark.png" alt="Hallmark — A design skill that refuses to look AI-generated" />
 </p>
 
-Hallmark picks a macrostructure for the brief, dresses it in one of twenty themes, runs seventy slop-test gates plus a pre-emit self-critique, and refuses the on-distribution defaults every LLM was trained into. Two pages by Hallmark for two different briefs feel like different sites, not colour-swaps of the same template.
+Hallmark picks a macrostructure for the brief, dresses it in one of twenty themes, runs fifty-seven slop-test gates plus a pre-emit self-critique, and refuses the on-distribution defaults every LLM was trained into. Two pages by Hallmark for two different briefs feel like different sites, not colour-swaps of the same template.
 
 ---
 
@@ -62,7 +62,7 @@ Each page is self-contained HTML + CSS, stamped with its macrostructure in the C
 
 ## Custom <sup>NEW</sup>
 
-Most briefs route to the catalog. But when a brief carries real creative intent — a named brand colour, a vibe the catalog can't carry, or a layout that *is* the point — Hallmark switches to **Custom** and designs the whole page from first principles: a made-to-measure OKLCH palette, a free-font pairing, and a structure no catalog theme would produce. Same seventy slop-test gates. No template underneath.
+Most briefs route to the catalog. But when a brief carries real creative intent — a named brand colour, a vibe the catalog can't carry, or a layout that *is* the point — Hallmark switches to **Custom** and designs the whole page from first principles: a made-to-measure OKLCH palette, a free-font pairing, and a structure no catalog theme would produce. Same fifty-seven slop-test gates. No template underneath.
 
 Four one-line briefs, four pages that share nothing:
 

@@ -375,7 +375,7 @@ Brand wordmarks — lowercase: `cinder`, `wright`, `stratum`. Legal entity names
 - **Never colour-emphasise a noun.** The verb landmark is the verb. Always.
 - **Never more than one accent-coloured word per headline.** Two is a marketing landing page; one is a design move.
 - **Never invent stats.** If the brief has no real numbers, skip the three-stat row entirely.
-- **Never re-draw browser chrome.** Real screenshots only (slop-test gate 57).
+- **Never re-draw browser chrome.** Real screenshots only (slop-test gate 47).
 - **Never two apparatus objects on one page.** One per build.
 - **Never a system font for the display.** Instrument Serif or the documented fallback chain (`"Tiempos Headline", ui-serif, Georgia, serif`).
 - **Never rotate the apparatus.** Night apparatus pulses; Day apparatus is static.

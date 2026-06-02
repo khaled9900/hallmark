@@ -159,7 +159,7 @@ button { font: inherit; color: inherit; }
    Intro / central explainer
    =================================================================== */
 .intro {
-  /* hero pads heavier at the bottom (gate 54): it sits INTO the table
+  /* hero pads heavier at the bottom (gate 44): it sits INTO the table
      below rather than floating. block-end ≈ 2× block-start. */
   max-width: var(--maxw-page);
   margin-inline: auto;

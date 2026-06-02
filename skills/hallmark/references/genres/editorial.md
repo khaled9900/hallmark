@@ -37,11 +37,11 @@ Default. Pick editorial when the brief does not name a specialised aesthetic —
 The universal slop-test gates apply, plus these editorial-specific bans:
 
 - **Pill-rounded buttons** with gradient fill — pill is fine, gradient on a pill is not.
-- **Centred-everything heroes** (gate 7 universal). Editorial heroes are left-biased or asymmetric.
+- **Centred-everything heroes** (gate 6 universal). Editorial heroes are left-biased or asymmetric.
 - **Card-in-card** layouts (gate 4 universal).
 - **Three-column equal-icon-tile feature grid** (gate 3 universal).
 - **Glassmorphism** — never; the medium is paper, not glass.
-- **Pure black or pure white** as paper or ink (gate 8). Tint everything toward the anchor.
+- **Pure black or pure white** as paper or ink (gate 7). Tint everything toward the anchor.
 
 ## Voice fixtures
 

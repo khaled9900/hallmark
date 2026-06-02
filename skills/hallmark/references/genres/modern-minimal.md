@@ -26,8 +26,8 @@ The two differ on every axis a glance registers: Coral is warm-grey + coral + Ge
 ## What this genre allows
 
 - **Pill-rounded CTAs** — both filled and outlined. Black-filled primary + white-outlined secondary is the canonical pair.
-- **Pure white paper** (`#fff` / `oklch(100% 0 0)`) — gate 8 is loosened here.
-- **Zero-chroma neutrals** — gate 24 is loosened here. The Stripe / ElevenLabs school is monochrome by design.
+- **Pure white paper** (`#fff` / `oklch(100% 0 0)`) — gate 7 is loosened here.
+- **Zero-chroma neutrals** — gate 22 is loosened here. The Stripe / ElevenLabs school is monochrome by design.
 - **Two-column hero with title-left + paragraph-right** — explicitly canonical for this genre.
 - **Refined card surface** with very subtle border (`oklch(91% 0 0)`) and 8 px radius.
 - **Large, tight-set displays** (`clamp(2.5rem, 5vw + 0.5rem, 4.75rem)`).
@@ -38,8 +38,8 @@ The two differ on every axis a glance registers: Coral is warm-grey + coral + Ge
 - **Hairline-everything** — borders are thin but visible, not the editorial 0.5 px hairline aesthetic.
 - **Asymmetric prose columns** — modern-minimal aligns left, justified to a regular grid.
 - **Drop caps, fleurons, ornament** — none of it.
-- **Bouncy / overshoot easings** — gate 13 universal applies strictly here.
-- **Gradient text** — gate 5 universal. Stays banned.
+- **Bouncy / overshoot easings** — gate 12 universal applies strictly here.
+- **Gradient text** — gate 2 universal. Stays banned.
 - **Glassmorphism** — banned.
 
 ## Voice fixtures
@@ -56,7 +56,7 @@ The two differ on every axis a glance registers: Coral is warm-grey + coral + Ge
 - **Acceptable also:** N1 Wordmark + 2 links (when destinations are genuinely minimal); N9 Edge-aligned minimal (when the brand earns the silence).
 - **Default footer:** Ft2 Inline single line — wordmark + tagline + tiny credit, hairline rule above. Restrained.
 - **Acceptable also:** Ft1 Mast-headed; Ft5 Statement (when the page wants a closing line).
-- **Banned for modern-minimal:** N6 Newspaper masthead (editorial vocabulary); N7 Brutal slab (fights the restraint); Ft8 Marquee scroll (kinetic, wrong voice); Ft3 Index columns at full saturation (the AI-footer fingerprint — gate 52).
+- **Banned for modern-minimal:** N6 Newspaper masthead (editorial vocabulary); N7 Brutal slab (fights the restraint); Ft8 Marquee scroll (kinetic, wrong voice); Ft3 Index columns at full saturation (the AI-footer fingerprint — gate 43).
 
 See [`component-cookbook.md`](../component-cookbook.md) § Navigation and § Footers for the full archetypes + code.
 

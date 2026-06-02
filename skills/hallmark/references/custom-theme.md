@@ -133,9 +133,9 @@ These are not arbitrary. The L-step gives the palette **typographic depth** with
 
 ### B.7 · Verification
 
-- **Gate 8** (no pure #000 / #fff base): paper and ink both have chroma > 0. Pass.
-- **Gate 24** (no zero-chroma neutrals): every grey has chroma ≥ 0.005. Pass.
-- **Gate 25** (accent ≤ 5 % footprint): plan the accent's role on the page (active state, one wordmark dot, one CTA fill). Don't carpet a section in accent.
+- **Gate 7** (no pure #000 / #fff base): paper and ink both have chroma > 0. Pass.
+- **Gate 22** (no zero-chroma neutrals): every grey has chroma ≥ 0.005. Pass.
+- **Gate 23** (accent ≤ 5 % footprint): plan the accent's role on the page (active state, one wordmark dot, one CTA fill). Don't carpet a section in accent.
 
 ---
 

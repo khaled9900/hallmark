@@ -45,15 +45,15 @@ These six disciplines are **not** verb-specific. They apply to default Design, `
 
 1. **Pre-emit self-critique.** Before handing back any output, score it 1–5 on six axes — Philosophy, Hierarchy, Execution, Specificity, Restraint, Variety. Anything **< 3** triggers a revision pass. Stamp the six scores at the top of the artifact (`/* Hallmark · pre-emit critique: P5 H4 E5 S4 R5 V5 */`). See [`references/slop-test.md`](references/slop-test.md) § Pre-emit self-critique.
 
-2. **Honest copy — no fabricated content.** If the user did not supply a metric, do not invent one. Stat-led layouts, comparison rows, and proof bars must use real numbers, a placeholder (`—` plus a labelled grey block, "metric to confirm"), or a different macrostructure. *"+47 % conversion"*, *"trusted by 50,000+ teams"*, and *"10× faster"* are slop the moment they're invented. Same rule for testimonials, logos, and case-study counts. See [`references/anti-patterns.md` § Invented metrics](references/anti-patterns.md) and slop-test gate **56**.
+2. **Honest copy — no fabricated content.** If the user did not supply a metric, do not invent one. Stat-led layouts, comparison rows, and proof bars must use real numbers, a placeholder (`—` plus a labelled grey block, "metric to confirm"), or a different macrostructure. *"+47 % conversion"*, *"trusted by 50,000+ teams"*, and *"10× faster"* are slop the moment they're invented. Same rule for testimonials, logos, and case-study counts. See [`references/anti-patterns.md` § Invented metrics](references/anti-patterns.md) and slop-test gate **46**.
 
-3. **Locked tokens — no mid-render improvisation.** Once a theme is selected at Step 2.6, every colour and every `font-family` declaration in the artifact must reference a named token (`var(--color-accent)`, `font-family: var(--font-display)`). Inline OKLCH / hex / `rgb()` values, or a `font-family: "Some Font"` declaration that bypasses the token block, are not allowed. If a value is needed that doesn't exist as a token, lift it into the token block as a new named variable, then reference it. See [`references/anti-patterns.md` § Mid-render token improvisation](references/anti-patterns.md) and slop-test gate **58**.
+3. **Locked tokens — no mid-render improvisation.** Once a theme is selected at Step 2.6, every colour and every `font-family` declaration in the artifact must reference a named token (`var(--color-accent)`, `font-family: var(--font-display)`). Inline OKLCH / hex / `rgb()` values, or a `font-family: "Some Font"` declaration that bypasses the token block, are not allowed. If a value is needed that doesn't exist as a token, lift it into the token block as a new named variable, then reference it. See [`references/anti-patterns.md` § Mid-render token improvisation](references/anti-patterns.md) and slop-test gate **48**.
 
-4. **Re-drawn chrome forbidden.** Hallmark must not hand-build fake browser bars (URL pill + traffic-light dots), fake phone frames, fake code-block windows (mock title bar + dots wrapping a `<pre>`), or fake IDE chrome — the user's environment already supplies real chrome. Use real screenshots wrapped in a `<figure>` (with at most a hairline border), or omit the chrome and let the content stand on its own. See [`references/anti-patterns.md` § Re-drawn UI chrome](references/anti-patterns.md) and slop-test gate **57**.
+4. **Re-drawn chrome forbidden.** Hallmark must not hand-build fake browser bars (URL pill + traffic-light dots), fake phone frames, fake code-block windows (mock title bar + dots wrapping a `<pre>`), or fake IDE chrome — the user's environment already supplies real chrome. Use real screenshots wrapped in a `<figure>` (with at most a hairline border), or omit the chrome and let the content stand on its own. See [`references/anti-patterns.md` § Re-drawn UI chrome](references/anti-patterns.md) and slop-test gate **47**.
 
-5. **Mobile responsiveness — every emit verified at 320 / 375 / 414 / 768 px.** Hallmark's output must render flawlessly at all four widths. The non-negotiables: no horizontal scroll (gate 36), no two-line clickable text — buttons, primary nav links, footer links, breadcrumbs, CTAs (gate 59); image-bearing grid tracks use `minmax(0, 1fr)`, never bare `1fr` (gate 61); root has `overflow-x: clip` on both `html` and `body` — never `hidden` (gate 62); display headers wrap inside long words via `overflow-wrap: anywhere; min-width: 0` (gate 63); section heads collapse to one column on mobile across every theme variant (gate 64); radio-tab patterns don't scroll-jump (gate 65). See [`references/responsive.md` § Mobile — non-negotiable](references/responsive.md). This is a hard floor, not a wish list.
+5. **Mobile responsiveness — every emit verified at 320 / 375 / 414 / 768 px.** Hallmark's output must render flawlessly at all four widths. The non-negotiables: no horizontal scroll + root `overflow-x: clip` on both `html` and `body`, never `hidden` (gate 34); no two-line clickable text — buttons, primary nav links, footer links, breadcrumbs, CTAs (gate 49); image-bearing grid tracks use `minmax(0, 1fr)`, never bare `1fr` (gate 50); display headers wrap inside long words via `overflow-wrap: anywhere; min-width: 0` (gate 51); section heads collapse to one column on mobile across every theme variant (gate 52); radio-tab patterns don't scroll-jump (gate 53). See [`references/responsive.md` § Mobile — non-negotiable](references/responsive.md). This is a hard floor, not a wish list.
 
-6. **Typography purity — no italic headers.** Headings and display type are always roman (`font-style: normal`). An italicised emphasis word inside an otherwise-upright heading (`Built to <em>think</em>`) is one of the most reliable AI tells; so is an all-italic display face on headings. Carry emphasis with weight, accent colour, or a drawn underline. Italic survives only as *body-copy* emphasis inside running paragraphs. See [`references/anti-patterns.md` § Italic headers](references/anti-patterns.md) and slop-test gate **40a**.
+6. **Typography purity — no italic headers.** Headings and display type are always roman (`font-style: normal`). An italicised emphasis word inside an otherwise-upright heading (`Built to <em>think</em>`) is one of the most reliable AI tells; so is an all-italic display face on headings. Carry emphasis with weight, accent colour, or a drawn underline. Italic survives only as *body-copy* emphasis inside running paragraphs. See [`references/anti-patterns.md` § Italic headers](references/anti-patterns.md) and slop-test gate **38a**.
 
 ---
 
@@ -77,7 +77,7 @@ If two signals fire, route component. If only the page flow fires (multi-section
 - **Step 2.6 · Theme route** — same. If a `tokens.css` or `design.md` exists, the component uses those tokens. Otherwise it asks "is there a system to follow, or should I pick one?" — defaulting to *catalog* if the user is silent.
 - **2+1 font discipline** — same.
 - **State discipline — STRICTER.** Every interactive component MUST ship code for **all 8 states**: default · hover · `:focus-visible` · `:active` · disabled · loading · error · success. The 8-state checklist in [`interaction-and-states.md`](references/interaction-and-states.md) is mandatory, not advisory.
-- **Slop test — universal-only subset.** Run the visual / microinteraction / contrast (gates 46–50) / a11y / typography gates. Skip the diversification gates (no `.hallmark/log.json` entry — components don't rotate) and skip the layout-safety gates that assume a full page.
+- **Slop test — universal-only subset.** Run the visual / microinteraction / contrast (gates 40–41) / a11y / typography gates. Skip the diversification gates (no `.hallmark/log.json` entry — components don't rotate) and skip the layout-safety gates that assume a full page.
 
 ### What Component-scope skips
 
@@ -341,7 +341,7 @@ By the time you reach this step, one of four things is true:
 
 **Custom is a quiet branch, not a default question.** Most briefs route to catalog and the user never sees the words "catalog" or "custom." The 20 named themes plus the rotation rule already deliver structural variety; the fork is reserved for when the brief specifically asks for a tuned look the catalog can't carry.
 
-A custom theme is a **complete** OKLCH palette + font pairing tuned to the brief — not a one-off colour swap, not an excuse to bypass the rules. Every constraint in [`color.md`](references/color.md), [`typography.md`](references/typography.md), and [`anti-patterns.md`](references/anti-patterns.md) still applies. The 70 slop-test gates fire unchanged. The Step 5 preview block surfaces the palette + pairing in plain text **before** any code is emitted, so the user can redirect.
+A custom theme is a **complete** OKLCH palette + font pairing tuned to the brief — not a one-off colour swap, not an excuse to bypass the rules. Every constraint in [`color.md`](references/color.md), [`typography.md`](references/typography.md), and [`anti-patterns.md`](references/anti-patterns.md) still applies. The 57 slop-test gates fire unchanged. The Step 5 preview block surfaces the palette + pairing in plain text **before** any code is emitted, so the user can redirect.
 
 The diversification rule is theme-route-blind: a custom run that follows another custom (or a catalog) must differ on at least one of the three axes from the previous entry, same as catalog-vs-catalog. Custom entries record their three axes explicitly into `.hallmark/log.json` (see [`custom-theme.md`](references/custom-theme.md) § F).
 
@@ -378,7 +378,7 @@ The non-negotiables live in [`references/`](references/). **Be precise about wha
 - [`preview-examples.md`](references/preview-examples.md) — load only if you need a worked example of the Step 5 preview block format. The bullet list in Step 5 itself is normally enough; reach for the file only when picking unusual macrostructures / custom themes.
 
 **Load-at-the-end (Step 7 only):**
-- [`slop-test.md`](references/slop-test.md) — **strictly Step 7, after Build.** The 70 gates are a post-emit check, not a pre-emit reference. Pre-loading slop-test.md costs ~7K tokens for nothing — the gates inform fixes, not generation. If a gate fails at Step 7, fix and re-test; do not consult the file earlier "to know what to avoid" — that's what `anti-patterns.md` is for.
+- [`slop-test.md`](references/slop-test.md) — **strictly Step 7, after Build.** The 57 gates are a post-emit check, not a pre-emit reference. Pre-loading slop-test.md costs ~7K tokens for nothing — the gates inform fixes, not generation. If a gate fails at Step 7, fix and re-test; do not consult the file earlier "to know what to avoid" — that's what `anti-patterns.md` is for.
 - [`contract.md`](references/contract.md) — load at handoff time for output-contract + scope rules.
 - [`export-formats.md`](references/export-formats.md) — load at Step 6 only when the project warrants multi-format exports (i.e. has a `design.md`). Single-page builds emit `tokens.css` from the in-memory token state and don't need this file.
 
@@ -416,7 +416,7 @@ Before emitting any code, output a tight summary of what you're about to ship. T
 - **Enrichment** · none (typography only)
 - **Sections** · Hero · Logos · Stats · Features · Testimonials · Pricing · FAQ · CTA · Footer
 - **Motion** · counter · pricing-lift · pulse-once
-- **Slop test** · 70 / 70 ✓ (run after Build)
+- **Slop test** · 57 / 57 ✓ (run after Build)
 - **Diversification** · differs from Newsprint on display style + accent hue
 ```
 
@@ -427,7 +427,7 @@ Before emitting any code, output a tight summary of what you're about to ship. T
 3. **Enrichment** — the chosen archetype + tier, or *none (typography only)*.
 4. **Sections** — section names separated by ` · `, in DOM order.
 5. **Motion** — microinteraction primitives separated by ` · `, or *none — typography only*. Always under three primitives per the [`microinteractions.md`](references/microinteractions.md) hard rules.
-6. **Slop test** — `70 / 70 ✓` if all gates pass, or `N / 70 — fails: <gate numbers>` if any are open. Run the slop test BEFORE writing this row; the slop test is Step 7.
+6. **Slop test** — `57 / 57 ✓` if all gates pass, or `N / 57 — fails: <gate numbers>` if any are open. Run the slop test BEFORE writing this row; the slop test is Step 7.
 7. **Diversification** *(optional, only when `.hallmark/log.json` has prior entries)* — what axes differ vs the previous run.
 
 **Then one quiet CTA line, italicised, after the bullets:**
@@ -447,7 +447,7 @@ Emit code that satisfies the tone and structural fingerprint. Match the complexi
 Always:
 
 - **Hero headline — match font-size to copy length.** When you write the headline yourself (no user-supplied copy), aim for **≤ 7 words and ≤ 50 chars** from the start. For longer headlines, apply the size-by-length brackets in [`typography.md § Hero headline sizing`](references/typography.md): 21–50 chars use `--text-display`; 51–90 chars cap at `--text-display-s`; > 90 chars rewrite shorter or cap at `--text-4xl`. Aggressive-display themes (Brutal, Riso, Manifesto) auto-step down one rung past 50 chars — their 6.5–9rem ceiling is for short statements only.
-- **Section tags / eyebrows — default OFF.** Do NOT emit `01 · THE TOUR`, `02 / FEATURES`, `Chapter Three`, or any uppercase mono-cap section number / kicker / label unless either (a) the user explicitly asked for chapter / step / section numbering, OR (b) the macrostructure is Long Document, Manifesto, or Catalogue numbered AND the content is genuinely ordinal. Cap at 1–2 per page even then. **When a tag IS used, always stack vertical — tag above, heading directly underneath in the same column.** The tag-left / heading-right two-column pattern (a.k.a. hanging header, left-margin label) is banned outright — it is the single most reliable templated-editorial tell, and slop-test gate **66** auto-fails it.
+- **Section tags / eyebrows — default OFF.** Do NOT emit `01 · THE TOUR`, `02 / FEATURES`, `Chapter Three`, or any uppercase mono-cap section number / kicker / label unless either (a) the user explicitly asked for chapter / step / section numbering, OR (b) the macrostructure is Long Document, Manifesto, or Catalogue numbered AND the content is genuinely ordinal. Cap at 1–2 per page even then. **When a tag IS used, always stack vertical — tag above, heading directly underneath in the same column.** The tag-left / heading-right two-column pattern (a.k.a. hanging header, left-margin label) is banned outright — it is the single most reliable templated-editorial tell, and slop-test gate **54** auto-fails it.
 - Use OKLCH for every colour. Declare tokens as CSS custom properties at `:root`.
 - Use a 4pt spacing scale with semantic names (`--space-sm`, `--space-md`, …).
 - Pick a distinctive display face and a refined body face. Pairings, not single-font pages — *unless* the single-font choice IS the design (a true terminal-aesthetic page is monospace-only on purpose; that's allowed).
@@ -466,7 +466,7 @@ Always:
 
 ### 7. The slop test
 
-Before handing back, run the output through the 70-gate slop test in [`references/slop-test.md`](references/slop-test.md). Every answer must be **no**. Load that file at this step (not earlier — it isn't needed until handoff). The active genre matters: some gates are universal, some are genre-scoped (atmospheric loosens the radial-bloom gate; modern-minimal loosens the zero-chroma neutral gate; etc.). The full per-genre overrides are listed inline in `slop-test.md`.
+Before handing back, run the output through the 57-gate slop test in [`references/slop-test.md`](references/slop-test.md). Every answer must be **no**. Load that file at this step (not earlier — it isn't needed until handoff). The active genre matters: some gates are universal, some are genre-scoped (atmospheric loosens the radial-bloom gate; modern-minimal loosens the zero-chroma neutral gate; etc.). The full per-genre overrides are listed inline in `slop-test.md`.
 
 Run the slop test BEFORE writing the Slop test row in the Step 5 preview block — that row reflects the actual outcome of this step.
 

@@ -53,7 +53,7 @@ ul, ol { list-style: none; }
   padding-inline: var(--gutter);
 }
 
-/* timecode + name stamp that opens every section (vertical stack — gate 66) */
+/* timecode + name stamp that opens every section (vertical stack — gate 54) */
 .stamp {
   display: flex;
   align-items: baseline;
@@ -343,7 +343,7 @@ section[tabindex]:focus { outline: none; }
 .track--b .track__copy  { grid-column: 1; grid-row: 1 / 3; align-self: center; }
 .track--b .minwave      { grid-column: 1 / -1; }
 
-.track__head { grid-column: 1; }   /* eyebrow + heading stacked (gate 66) */
+.track__head { grid-column: 1; }   /* eyebrow + heading stacked (gate 54) */
 .track__title {
   font-family: var(--font-display);
   font-weight: 460;

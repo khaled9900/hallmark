@@ -149,7 +149,7 @@ p { margin: 0; }
 /* no forced nowrap — let the line break on narrow sheets */
 .broadside__title-2 {
   display: block;
-  font-weight: 500;              /* roman — emphasis via weight, never italic (gate 40a) */
+  font-weight: 500;              /* roman — emphasis via weight, never italic (gate 38a) */
   color: var(--ink-soft);
 }
 /* the drop-figure: an oversized initial in the printer's red */

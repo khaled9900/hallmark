@@ -153,7 +153,7 @@ body {
   letter-spacing: var(--track-tight);
   color: var(--ink);
   /* keep words whole at comfortable widths; the narrow breakpoint switches to
-     break-word as a last resort so long names can't overflow (gate 63) */
+     break-word as a last resort so long names can't overflow (gate 51) */
   overflow-wrap: normal;
   min-width: 0;
 }
@@ -613,7 +613,7 @@ body {
      never under it; the puck is var(--stamp-size-s) + its inset offset */
   .nameplate { padding-right: var(--stamp-clear); }
   /* narrow widths: allow last-resort intra-word breaks so a long station/line
-     name can never overflow the slimmer column (gate 63) */
+     name can never overflow the slimmer column (gate 51) */
   .nameplate__line { font-size: var(--text-xl); overflow-wrap: break-word; }
 
   .perforation__rule { letter-spacing: 0.08em; }

@@ -57,7 +57,7 @@ Composed and sparse. The one hero type-in (plays once). Section reveals fade + r
 - **No warm paper** — warm grey is Coral's. Cobalt is cool (hue ~250–258).
 - **No pure `#fff` / `#000`.** Cool near-white paper, cool charcoal ink.
 - **No pill / gradient CTAs.** One solid cobalt button at 6px radius + understated typographic links. Name the destination.
-- **No centred-everything hero** (gate 53) — left-biased, title-left / demo-right.
+- **No centred-everything hero** (gate 6) — left-biased, title-left / demo-right.
 - **No three-equal-icon-tile feature grid** (gate 3) — vary it (one wide code example + narrower points; asymmetric benchmark figures).
 - **No glassmorphism, no gradient text** (gates), **no aurora/mesh blob, and no background texture/pattern at all** — cool paper + hairlines carry the page; its one dark beat is the graphite band (signature 8), not a background.
 

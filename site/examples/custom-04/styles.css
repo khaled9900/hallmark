@@ -284,7 +284,7 @@ body::after { /* directional grain — fine diagonal hatch */
   padding-top: clamp(var(--space-xl), 5vw, var(--space-3xl));
 }
 .spine__head {
-  display: block; /* gate 66 — eyebrow + heading single column */
+  display: block; /* gate 54 — eyebrow + heading single column */
   margin-bottom: clamp(var(--space-xl), 6vw, var(--space-3xl));
 }
 .spine__eyebrow {

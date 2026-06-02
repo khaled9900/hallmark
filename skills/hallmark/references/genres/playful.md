@@ -36,7 +36,7 @@ Brief mentions any of: *fun, consumer, casual, family, kids, friendly, approacha
 - **Comic Sans, Comic Neue, anything that signals "we're zany"** — playful stays sophisticated, even at full vibrancy.
 - **Bouncy / overshoot easings** — playful uses smooth easings by default. **Hum is the documented exception** — spring overshoot (`cubic-bezier(0.34, 1.56, 0.64, 1)`) is canonical on the primary CTA and character moment (one each per page).
 - **Glassmorphism** — banned across all genres.
-- **Gradient text** — gate 5 universal. Stays banned.
+- **Gradient text** — gate 2 universal. Stays banned.
 
 ## Voice fixtures
 

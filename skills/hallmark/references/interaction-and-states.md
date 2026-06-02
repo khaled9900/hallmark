@@ -169,7 +169,7 @@ The outline starts transparent at 2 px so when the focus ring appears, the box g
 
 ## Contrast discipline
 
-Hallmark output must pass slop-test gates 46–50 before shipping. Compute contrast for every `(color, background-color)` pair on the page. The common failures Hallmark output trips on:
+Hallmark output must pass slop-test gates 40–41 before shipping. Compute contrast for every `(color, background-color)` pair on the page. The common failures Hallmark output trips on:
 
 1. **Text on a flipped surface.** `.section--ink { background: var(--color-ink); }` flips the surface dark; nested text still inherits `color: var(--color-ink)` → ink-on-ink. Fix: any rule that sets a dark `background` must *also* set `color: var(--color-paper)` in the same rule.
 2. **Button text on accent fill.** `background: var(--color-accent); color: white;` — but white is 4.5:1 against this accent only if `--color-accent` is dark enough. Use `var(--color-accent-ink)` instead, which the theme guarantees passes ≥ APCA Lc 60.
