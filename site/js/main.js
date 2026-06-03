@@ -40,6 +40,7 @@ document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
 
 /* — Theme registry ————————————————————————————————————— */
 const THEMES = {
+  hum: "Hum",
   specimen: "Specimen",
   midnight: "Midnight",
   brutal: "Brutal",
@@ -58,7 +59,6 @@ const THEMES = {
   editorial: "Editorial",
   carnival: "Carnival",
   lumen: "Lumen",
-  hum: "Hum",
   cobalt: "Cobalt",
 };
 const STORAGE_KEY = "hallmark-theme";
